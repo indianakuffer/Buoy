@@ -1,8 +1,4 @@
-# PROJECT 4 README <!-- omit in toc -->
-
-> The Project Planning section **should be completed** for your project pitch with instructors.
->
-> To ensure correct Markdown, copy and paste the raw template code into your project repo README file. Remove ALL template instructions and replace with your project details.
+# Buoy
 
 - [Overview](#overview)
 - [MVP](#mvp)
@@ -24,7 +20,7 @@
 
 ## Overview
 
-_**Project Title** is lorem ipsum dolor sit amet. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+_**Buoy** provides users with a platform to journal their thoughts and cast them out to 'sea'. Users are able to customize the color of their thought, or add a tag. While at sea, a user can watch the thoughts of others drift by based on location, color, or tag._
 
 
 <br>
