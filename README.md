@@ -3,6 +3,7 @@
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)
+  - [Challenges](#challenges)
   - [Libraries and Dependencies](#libraries-and-dependencies)
   - [Client (Front End)](#client-front-end)
     - [Wireframes](#wireframes)
@@ -20,7 +21,7 @@
 
 ## Overview
 
-_**Buoy** provides users with a platform to journal their thoughts and cast them out to 'sea'. Users are able to customize the color of their thought, or add a tag. While at sea, a user can watch the thoughts of others drift by based on location, color, or tag._
+**Buoy** is a social app in which users can journal their thoughts and cast them out to 'sea'. Users are able to customize the color of their thought, or add a tag. While at sea, a user can watch the anonymous thoughts of others drift by based on location, color, or tag.
 
 
 <br>
@@ -29,31 +30,36 @@ _**Buoy** provides users with a platform to journal their thoughts and cast them
 
 > The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
 
-_The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+The **Buoy** MVP will allow for user account creation, deletion, editing, and logging in. Users will be able to create thoughts, delete thoughts and view the thoughts of others. User account information, thoughts, colors, and tags will be stored on a Ruby on Rails backend.
 
 <br>
 
 ### Goals
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- _Ruby on Rails backend for storing user info and thought info._
+- _User account management (CRUD)._
+- _User can create, customize, and delete thoughts._
+- _Screen showing thoughts of other users._
+
+<br>
+
+### Challenges
+
+- _Buoy's data requires more complex relationships than I've made before._
+- _Implementing location for thoughts, and filtering sea of thoughts based on user location._
 
 <br>
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. Below is an example - this needs to be replaced!
 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|      React       | _Lorem ipsum dolor sit amet, consectetur._ |
-|   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
-| React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
-|     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|      React       | Frontend framework. |
+|   React Router   | Routing for frontend. |
+|      Axios       | Promise based HTTP client for the browser and Node.js. |
+|Styled Components | Styling management for React components.   |
+|   React Spring   | Physics-based animation library for React. |
 
 <br>
 
@@ -61,31 +67,59 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 
 #### Wireframes
 
-> Use the Wireframes section to display desktop, tablet and mobile views. No hand-drawn wireframes. Use a tool like wireframe.cc, Whimsical or AdobeXD
+<details>
+<Summary>Full Wireframe</Summary>
 
-![Dummy Link](url)
+![Buoy - Full](https://i.imgur.com/pgOf8US.png)
+</details>
 
-- Desktop Landing
+<details>
+<Summary>Landing</Summary>
 
-![Dummy Link](url)
+![Buoy - Landing](https://i.imgur.com/3ApTugn.png)
+</details>
 
-- Desktop Hero
+<details>
+<Summary>Login</Summary>
 
-![Dummy Link](url)
+![Buoy - Login](https://i.imgur.com/H5m3C4x.png)
+</details>
 
-- Resource Index
+<details>
+<Summary>Register</Summary>
 
-![Dummy Link](url)
+![Buoy - Register](https://i.imgur.com/medHXAE.png)
+</details>
 
-- Resource Show
+<details>
+<Summary>Account Details</Summary>
 
-![Dummy Link](url)
+![Buoy - Account Details](https://i.imgur.com/sHb87rB.png)
+</details>
 
-- Tablet Resource Index
+<details>
+<Summary>Account Edit</Summary>
 
-![Dummy Link](url)
+![Buoy - Account Edit](https://i.imgur.com/ugZ8cmo.png)
+</details>
 
-- Mobile Resource Index
+<details>
+<Summary>Create Thought</Summary>
+
+![Buoy - Create Thought](https://i.imgur.com/V5eGwfk.png)
+</details>
+
+<details>
+<Summary>Thoughts</Summary>
+
+![Buoy - Thoughts](https://i.imgur.com/EakPflI.png)
+</details>
+
+<details>
+<Summary>Sea</Summary>
+
+![Buoy - Sea](https://i.imgur.com/uyVMeXN.png)
+</details>
 
 #### Component Tree
 
@@ -93,19 +127,38 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 
 #### Component Hierarchy
 
-> Use this section to define your React components and the data architecture of your app. This should be a reflection of how you expect your directory/file tree to look like. 
 
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
+|__ screens/
+      |__ Landing.jsx
+      |__ Login.jsx
+      |__ Register.jsx
+      |__ AccountDetails.jsx
+      |__ AccountEdit.jsx
+      |__ CreateThought.jsx
+      |__ Thoughts.jsx
+      |__ Sea.jsx
 |__ components/
       |__ Header.jsx
+      |__ Nav.jsx
+      |__ NavMenu.jsx
+      |__ ThoughtListing.jsx
+      |__ SearchBar.jsx
+      |__ shared/
+            |__ Button.jsx
+            |__ Input.jsx
+            |__ ProfilePic.jsx
+            |__ Popup.jsx
 |__ services/
+      |__ api-config.js
+      |__ auth.js
+      |__ users.js
+      |__ thoughts.js
+      |__ likes.js
+      |__ tags.js
+      |__ colors.js
 
 ```
 
@@ -139,22 +192,24 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
-
+![Buoy ERD](https://i.imgur.com/7d95EQG.png)
 <br>
 
 ***
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+> Ideas I've had that would be fun (or necessary) for my Post-MVP.
+
+- Custom user icons to select from.
+- Forgot password feature.
 
 ***
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+> A brief code snippet of functionality that I'm proud of and a brief description.
 
 ## Code Issues & Resolutions
 
-> Use this section to list of all major issues encountered and their resolution.
+> A of all major issues encountered and their resolution.
