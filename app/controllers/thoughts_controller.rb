@@ -15,7 +15,7 @@ class ThoughtsController < ApplicationController
 
   # GET /thoughts/1
   def show
-    render json: @thought
+    render json: @thought, include: [:likes, :tags]
   end
 
   # POST /thoughts
