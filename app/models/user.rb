@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   
-  has_many :likes
-  has_many :thoughts
-  belongs_to :profile_pic
+  has_many :likes, dependent: :destroy
+  has_many :thoughts, dependent: :destroy
+  belongs_to :profile_pic, optional: true
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

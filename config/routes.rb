@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
+  get '/thoughts/search', to: 'thoughts#search'
+  put '/thoughts/:id/tags/:tag_name', to: 'thoughts#add_tag'
+  put '/thoughts/:id/like', to: 'thoughts#toggle_like'
 
   resources :tags
   resources :likes

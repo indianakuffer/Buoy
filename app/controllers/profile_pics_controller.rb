@@ -47,6 +47,6 @@ class ProfilePicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def profile_pic_params
-      params.require(:profile_pic).permit(:image, :user_id)
+      params.require(:profile_pic).permit(:image)
     end
 end

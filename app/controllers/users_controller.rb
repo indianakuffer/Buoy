@@ -11,12 +11,13 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user, include: :profile_pic
   end
 
   # POST /users
   def create
     @user = User.new(user_params)
+    @user.profile_pic = ProfilePic.first
     
     if @user.save
       @token = encode({id: @user.id})
@@ -51,6 +52,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :profile_pic_id)
     end
 end

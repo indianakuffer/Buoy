@@ -1,12 +1,16 @@
 class ThoughtsController < ApplicationController
   before_action :set_thought, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [:index, :show, :create, :update, :destroy]
+  before_action :authorize_request, only: [:index, :show, :create, :update, :destroy, :add_tag, :toggle_like]
 
   # GET /thoughts
   def index
     @thoughts = Thought.all
 
     render json: @thoughts
+  end
+
+  def search
+
   end
 
   # GET /thoughts/1
@@ -17,6 +21,7 @@ class ThoughtsController < ApplicationController
   # POST /thoughts
   def create
     @thought = Thought.new(thought_params)
+    @thought.user = @current_user
 
     if @thought.save
       render json: @thought, status: :created, location: @thought
@@ -37,6 +42,36 @@ class ThoughtsController < ApplicationController
   # DELETE /thoughts/1
   def destroy
     @thought.destroy
+  end
+
+  # PUT /thoughts/1/tags/2
+  def add_tag
+    @thought = Thought.find(params[:id])
+
+    if Tag.exists?(name: params[:tag_name])
+      @tag = Tag.where(name: params[:tag_name])
+    else
+      @tag = Tag.create(name: params[:tag_name])
+    end
+
+    @thought.tags << @tag unless @thought.tags.select { |tag| tag.name == params[:tag_name] }.length > 0
+
+    render json: @thought, include: :tags
+  end
+
+  # PUT /thoughts/1/like
+  def toggle_like
+    @thought = Thought.find(params[:id])
+
+    @present = @thought.likes.select { |like| like.user == @current_user }
+    if @present.length > 0
+     @present.first.destroy
+     @thought = Thought.find(params[:id])
+    else
+      @like = @thought.likes.create(:user => @current_user)
+    end
+
+    render json: @thought, include: :likes
   end
 
   private
