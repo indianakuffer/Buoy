@@ -33,18 +33,18 @@ The **Buoy** MVP will provide frontend user account creation, deletion, and upda
 
 ### Goals
 
-- _Ruby on Rails backend for storing user info, thought info, colors, tags, and likes._
-- _Frontend user account management (full CRUD)._
-- _User can create, customize, and delete thoughts (CRD)._
-- _Screen showing thoughts of other users._
+- Ruby on Rails backend for storing user info, thought info, colors, tags, and likes.
+- Frontend user account management (CRUD).
+- User can create, customize, and delete thoughts (CRD).
+- Screen showing thoughts of other users.
 
 <br>
 
 ### Challenges
 
-- _Buoy's data requires more complex relationships than I've made before._
-- _Creating a strong visual design._
-- _Implementing location for thoughts, and filtering sea of thoughts based on user location._
+- Buoy's data requires more complex relationships than I've made before.
+- Creating a strong visual design.
+- Implementing location for thoughts, and filtering sea of thoughts based on user location.
 
 <br>
 
