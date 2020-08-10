@@ -27,15 +27,15 @@
 
 ## MVP
 
-The **Buoy** MVP will allow for user account creation, deletion, editing, and logging in. Users will be able to create thoughts, delete thoughts and view the thoughts of others. User account information, thoughts, colors, and tags will be stored on a Ruby on Rails backend.
+The **Buoy** MVP will provide frontend user account creation, deletion, and updating. Users will be able to write, view, and delete thoughts, with a separate screen for viewing the thoughts of others. User account information, thoughts, colors, and tags will be stored on a Ruby on Rails backend.
 
 <br>
 
 ### Goals
 
-- _Ruby on Rails backend for storing user info and thought info._
-- _User account management (CRUD)._
-- _User can create, customize, and delete thoughts._
+- _Ruby on Rails backend for storing user info, thought info, colors, tags, and likes._
+- _Frontend user account management (full CRUD)._
+- _User can create, customize, and delete thoughts (CRD)._
 - _Screen showing thoughts of other users._
 
 <br>
@@ -43,6 +43,7 @@ The **Buoy** MVP will allow for user account creation, deletion, editing, and lo
 ### Challenges
 
 - _Buoy's data requires more complex relationships than I've made before._
+- _Creating a strong visual design._
 - _Implementing location for thoughts, and filtering sea of thoughts based on user location._
 
 <br>
@@ -52,9 +53,12 @@ The **Buoy** MVP will allow for user account creation, deletion, editing, and lo
 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
+|      Rails       | Web app framework used for the restful API backend. |
+|      Rack-Cors   | Cross-Origin Resource Sharing support for Rails. |
+|      Pry-Rails   | Replace Rails console default IRB with Pry. |
 |      React       | Frontend framework. |
-|   React Router   | Routing for frontend. |
 |      Axios       | Promise based HTTP client for the browser and Node.js. |
+|   React Router   | Routing for frontend. |
 |Styled Components | Styling management for React components.   |
 |   React Spring   | Physics-based animation library for React. |
 
@@ -120,9 +124,14 @@ The **Buoy** MVP will allow for user account creation, deletion, editing, and lo
 
 [Full Album](https://imgur.com/a/gxED2hg)
 
+<br>
+
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+![Component Tree](https://i.imgur.com/JbbhmlY.png)
+> Dashed lines indicate shared components
+
+<br>
 
 #### Component Hierarchy
 
@@ -130,6 +139,7 @@ The **Buoy** MVP will allow for user account creation, deletion, editing, and lo
 ``` structure
 
 src
+|__ App.jsx
 |__ screens/
       |__ Landing.jsx
       |__ Login.jsx
@@ -143,13 +153,13 @@ src
       |__ Header.jsx
       |__ Nav.jsx
       |__ NavMenu.jsx
-      |__ ThoughtListing.jsx
       |__ SearchBar.jsx
       |__ shared/
             |__ Button.jsx
             |__ Input.jsx
             |__ ProfilePic.jsx
             |__ Popup.jsx
+            |__ ThoughtListing.jsx
 |__ services/
       |__ api-config.js
       |__ auth.js
@@ -160,6 +170,8 @@ src
       |__ colors.js
 
 ```
+
+<br>
 
 #### Component Breakdown
 
@@ -172,6 +184,8 @@ src
 |   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
 | Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
 |    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+
+<br>
 
 #### Time Estimates
 
@@ -192,7 +206,6 @@ src
 #### ERD Model
 
 ![Buoy ERD](https://i.imgur.com/7d95EQG.png)
-<br>
 
 ***
 
