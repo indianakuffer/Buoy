@@ -248,6 +248,7 @@ src
 \users - index, post
 \users\:id - show, put, destroy
 \thoughts - index, post
+  queries: color, tag
 \thoughts\:id - show, destroy
 \colors - index, post
 \colors\:id - show, put, destroy
