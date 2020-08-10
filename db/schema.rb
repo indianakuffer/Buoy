@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_153340) do
+ActiveRecord::Schema.define(version: 2020_08_10_153814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +57,12 @@ ActiveRecord::Schema.define(version: 2020_08_10_153340) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "profile_pic_id"
+    t.index ["profile_pic_id"], name: "index_users_on_profile_pic_id"
   end
 
   add_foreign_key "likes", "thoughts"
   add_foreign_key "likes", "users"
   add_foreign_key "thoughts", "users"
+  add_foreign_key "users", "profile_pics"
 end
