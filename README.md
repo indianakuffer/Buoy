@@ -21,7 +21,7 @@
 
 ## Overview
 
-**Buoy** is a social app in which users journal their thoughts and anonymously cast them out to 'sea' for others to view. Users can choose the color of their thought to represent how they're feeling, and give their thought any helpful tags. While at sea, a user can watch the anonymous thoughts of others drift by based on color, tag, or location. Buoy aims to remove showmanship and clout from social media while encouraging users to be empathetic and open about their emotions.
+**Buoy** is a social app that encourages users to be empathetic and open about their emotions while removing the showmanship and clout present in many online spaces. Users journal their thoughts and anonymously cast them out to 'sea' for others to view. Users can choose the color of their thought to represent how they're feeling, and give their thought helpful tags. While at sea, a user can watch the anonymous thoughts of others drift by based on color, tag, or location.
 
 <br>
 
