@@ -21,14 +21,11 @@
 
 ## Overview
 
-**Buoy** is a social app in which users can journal their thoughts and cast them out to 'sea'. Users are able to customize the color of their thought, or add a tag. While at sea, a user can watch the anonymous thoughts of others drift by based on location, color, or tag.
-
+**Buoy** is a social app in which users journal their thoughts and anonymously cast them out to 'sea' for others to view. Users can choose the color of their thought to represent how they're feeling, and give their thought any helpful tags. While at sea, a user can watch the anonymous thoughts of others drift by based on color, tag, or location. Buoy aims to remove showmanship and clout from social media while encouraging users to be empathetic and open about their emotions.
 
 <br>
 
 ## MVP
-
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
 
 The **Buoy** MVP will allow for user account creation, deletion, editing, and logging in. Users will be able to create thoughts, delete thoughts and view the thoughts of others. User account information, thoughts, colors, and tags will be stored on a Ruby on Rails backend.
 
@@ -121,6 +118,8 @@ The **Buoy** MVP will allow for user account creation, deletion, editing, and lo
 ![Buoy - Sea](https://i.imgur.com/uyVMeXN.png)
 </details>
 
+[Full Album](https://imgur.com/a/gxED2hg)
+
 #### Component Tree
 
 > Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
@@ -202,6 +201,7 @@ src
 > Ideas I've had that would be fun (or necessary) for my Post-MVP.
 
 - Custom user icons to select from.
+- Email verification.
 - Forgot password feature.
 
 ***
