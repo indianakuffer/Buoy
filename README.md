@@ -128,7 +128,7 @@ The **Buoy** MVP will provide frontend user account creation, deletion, and upda
 
 #### Component Tree
 
-![Component Tree](https://i.imgur.com/JbbhmlY.png)
+![Component Tree](https://i.imgur.com/OT8BbAw.png)
 > Dashed lines indicate shared components
 
 <br>
@@ -175,15 +175,27 @@ src
 
 #### Component Breakdown
 
-> Use this section to go into further depth regarding your components, including breaking down the components as stateless or stateful, and considering the passing of data between those components.
+> _All components are functional components._
 
-|  Component   |    Type    | state | props | Description                                                      |
-| :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
-|    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
-|  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
-|   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
-| Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
-|    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+|    Component    | state | props | Description                                                      |
+|  :----------:   | :---: | :---: | :--------------------------------------------------------------- |
+| App             |   y   |   n   | _Renders the Header and handles routing. Keeps state for UserInfo and UserThoughts._|
+| Landing         |   n   |   y   | _Splash page pre-login/registration. Does not show if site visited with valid JWT._|
+| Login           |   y   |   y   | _Form for logging in. Redirects to Sea upon successful login._|
+| Register        |   y   |   y   | _Form for registration. Redirects to CreateThought on successful registration._|
+| AccountDetails  |   n   |   y   | _Shows basic account info with link to AccountEdit and button for account deletion._|
+| AccountEdit     |   y   |   y   | _Form for updating account info._|
+| CreateThought   |   y   |   y   | _Form for creating new thoughts. Adds to UserThoughts state of App._|
+| Thoughts        |   n   |   y   | _Shows reverse-chronological list of user's thoughts. Ability to delete thoughts. Pulls info from UserThoughts state of App._|
+| Sea             |   y   |   y   | _Shows a feed of user thoughts, filterable by color, location, and tag._|
+| Header          |   n   |   y   | _Header renders Nav, NavMenu, and SearchBar when needed._|
+| Nav             |   y   |   y   | _Render user icon and login/register/logout links.._|
+| NavMenu         |   n   |   y   | _Links for navigating Buoy._|
+| Button          |   n   |   y   | _Shared button with props for onClick, Link, color, content, etc._|
+| Input           |   n   |   y   | _Shared input with props for name, type, placeholder, etc._|
+| ProfilePic      |   n   |   y   | _Shared icon displays user icon from UserInfo state of App._|
+| Popup           |   n   |   y   | _Shared popup for user alerts with props for content, color, button, etc._|
+| ThoughtListing  |   n   |   y   | _Shared component for showing a thought with props for thought content, info, etc._|
 
 <br>
 
