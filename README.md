@@ -1,12 +1,9 @@
-# PROJECT 4 README <!-- omit in toc -->
-
-> The Project Planning section **should be completed** for your project pitch with instructors.
->
-> To ensure correct Markdown, copy and paste the raw template code into your project repo README file. Remove ALL template instructions and replace with your project details.
+# Buoy
 
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)
+  - [Challenges](#challenges)
   - [Libraries and Dependencies](#libraries-and-dependencies)
   - [Client (Front End)](#client-front-end)
     - [Wireframes](#wireframes)
@@ -24,40 +21,46 @@
 
 ## Overview
 
-_**Project Title** is lorem ipsum dolor sit amet. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
-
+**Buoy** is a social app that encourages users to be empathetic and open about their emotions while removing the showmanship and clout present in many online spaces. Users journal their thoughts and anonymously cast them out to 'sea' for others to view. Users can choose the color of their thought to represent how they're feeling, and give their thought helpful tags. While at sea, a user can watch the anonymous thoughts of others drift by based on color, tag, or location.
 
 <br>
 
 ## MVP
 
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
-
-_The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+The **Buoy** MVP will provide frontend user account creation, deletion, and updating. Users will be able to write, view, and delete thoughts, with a separate screen for viewing the thoughts of others. User account information, thoughts, colors, and tags will be stored on a Ruby on Rails backend.
 
 <br>
 
 ### Goals
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- Ruby on Rails backend for storing user info, thought info, colors, tags, and likes.
+- Frontend user account management (CRUD).
+- User can create, customize, and delete thoughts (CRD).
+- Screen showing thoughts of other users.
+
+<br>
+
+### Challenges
+
+- Buoy's data requires more complex relationships than I've made before.
+- Creating a strong visual design.
+- Implementing location for thoughts, and filtering sea of thoughts based on user location.
 
 <br>
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. Below is an example - this needs to be replaced!
 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|      React       | _Lorem ipsum dolor sit amet, consectetur._ |
-|   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
-| React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
-|     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|      Rails       | Web app framework used for the restful API backend. |
+|      Rack-Cors   | Cross-Origin Resource Sharing support for Rails. |
+|      Pry-Rails   | Replace Rails console default IRB with Pry. |
+|      React       | Frontend framework. |
+|      Axios       | Promise based HTTP client for the browser and Node.js. |
+|   React Router   | Routing for frontend. |
+|Styled Components | Styling management for React components.   |
+|   React Spring   | Physics-based animation library for React. |
 
 <br>
 
@@ -65,77 +68,169 @@ _The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing el
 
 #### Wireframes
 
-> Use the Wireframes section to display desktop, tablet and mobile views. No hand-drawn wireframes. Use a tool like wireframe.cc, Whimsical or AdobeXD
+<details>
+<Summary>Full Wireframe</Summary>
 
-![Dummy Link](url)
+![Buoy - Full](https://i.imgur.com/pgOf8US.png)
+</details>
 
-- Desktop Landing
+<details>
+<Summary>Landing</Summary>
 
-![Dummy Link](url)
+![Buoy - Landing](https://i.imgur.com/3ApTugn.png)
+</details>
 
-- Desktop Hero
+<details>
+<Summary>Login</Summary>
 
-![Dummy Link](url)
+![Buoy - Login](https://i.imgur.com/H5m3C4x.png)
+</details>
 
-- Resource Index
+<details>
+<Summary>Register</Summary>
 
-![Dummy Link](url)
+![Buoy - Register](https://i.imgur.com/medHXAE.png)
+</details>
 
-- Resource Show
+<details>
+<Summary>Account Details</Summary>
 
-![Dummy Link](url)
+![Buoy - Account Details](https://i.imgur.com/sHb87rB.png)
+</details>
 
-- Tablet Resource Index
+<details>
+<Summary>Account Edit</Summary>
 
-![Dummy Link](url)
+![Buoy - Account Edit](https://i.imgur.com/ugZ8cmo.png)
+</details>
 
-- Mobile Resource Index
+<details>
+<Summary>Create Thought</Summary>
+
+![Buoy - Create Thought](https://i.imgur.com/V5eGwfk.png)
+</details>
+
+<details>
+<Summary>Thoughts</Summary>
+
+![Buoy - Thoughts](https://i.imgur.com/EakPflI.png)
+</details>
+
+<details>
+<Summary>Sea</Summary>
+
+![Buoy - Sea](https://i.imgur.com/uyVMeXN.png)
+</details>
+
+[Full Album](https://imgur.com/a/gxED2hg)
+
+<br>
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+![Component Tree](https://i.imgur.com/OT8BbAw.png)
+> Dashed lines indicate shared components
+
+<br>
 
 #### Component Hierarchy
 
-> Use this section to define your React components and the data architecture of your app. This should be a reflection of how you expect your directory/file tree to look like. 
 
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
+|__ App.jsx
+|__ screens/
+      |__ Landing.jsx
+      |__ Login.jsx
+      |__ Register.jsx
+      |__ AccountDetails.jsx
+      |__ AccountEdit.jsx
+      |__ CreateThought.jsx
+      |__ Thoughts.jsx
+      |__ Sea.jsx
 |__ components/
       |__ Header.jsx
+      |__ Nav.jsx
+      |__ NavMenu.jsx
+      |__ SearchBar.jsx
+      |__ shared/
+            |__ Button.jsx
+            |__ Input.jsx
+            |__ ProfilePic.jsx
+            |__ Popup.jsx
+            |__ ThoughtListing.jsx
 |__ services/
+      |__ api-config.js
+      |__ auth.js
+      |__ users.js
+      |__ thoughts.js
+      |__ likes.js
+      |__ tags.js
+      |__ colors.js
 
 ```
 
+<br>
+
 #### Component Breakdown
 
-> Use this section to go into further depth regarding your components, including breaking down the components as stateless or stateful, and considering the passing of data between those components.
+> _All components are functional components._
 
-|  Component   |    Type    | state | props | Description                                                      |
-| :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
-|    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
-|  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
-|   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
-| Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
-|    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+|    Component    | state | props | Description                                                      |
+|  :----------:   | :---: | :---: | :--------------------------------------------------------------- |
+| App             |   y   |   n   | _Renders the Header and handles routing. Keeps state for UserInfo and UserThoughts._|
+| Landing         |   n   |   y   | _Splash page pre-login/registration. Does not show if site visited with valid JWT._|
+| Login           |   y   |   y   | _Form for logging in. Redirects to Sea upon successful login._|
+| Register        |   y   |   y   | _Form for registration. Redirects to CreateThought on successful registration._|
+| AccountDetails  |   n   |   y   | _Shows basic account info with link to AccountEdit and button for account deletion._|
+| AccountEdit     |   y   |   y   | _Form for updating account info._|
+| CreateThought   |   y   |   y   | _Form for creating new thoughts. Adds to UserThoughts state of App._|
+| Thoughts        |   n   |   y   | _Shows reverse-chronological list of user's thoughts. Ability to delete thoughts. Pulls info from UserThoughts state of App._|
+| Sea             |   y   |   y   | _Shows a feed of user thoughts, filterable by color, location, and tag._|
+| Header          |   n   |   y   | _Header renders Nav, NavMenu, and SearchBar when needed._|
+| Nav             |   y   |   y   | _Render user icon and login/register/logout links.._|
+| NavMenu         |   n   |   y   | _Links for navigating Buoy._|
+| Button          |   n   |   y   | _Shared button with props for onClick, Link, color, content, etc._|
+| Input           |   n   |   y   | _Shared input with props for name, type, placeholder, etc._|
+| ProfilePic      |   n   |   y   | _Shared icon displays user icon from UserInfo state of App._|
+| Popup           |   n   |   y   | _Shared popup for user alerts with props for content, color, button, etc._|
+| ThoughtListing  |   n   |   y   | _Shared component for showing a thought with props for thought content, info, etc._|
+
+<br>
 
 #### Time Estimates
 
-> Use this section to estimate the time necessary to build out each of the components you've described above.
-
-| Task                | Priority | Estimated Time | Time Invested | Actual Time |
-| ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
-| Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
-| TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
-
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evaluate possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
+| Task                        | Priority | Estimated Time | Time Invested | Actual Time |
+| --------------------------- | :------: | :------------: | :-----------: | :---------: |
+| **Backend**                                                                           |
+| Initialize Rails            |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Scaffold Tables             |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Assign References           |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Assign Validations          |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Auth                 |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
+| Set Up Routes               |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Configure Controllers       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Rails Testing / Fixes       |    M     |     2.0 hrs    |     0 hrs     |     TBD     |
+| **Frontend**                                                                           |
+| Initialize React App        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Remove React Fluff          |    L     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up File Directory       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Screen Routing       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Services and Auth    |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
+| Set Up Component Shells     |    H     |     3.0 hrs    |     0 hrs     |     TBD     |
+| Initial Styling             |    M     |     3.0 hrs    |     0 hrs     |     TBD     |
+| Shared Comps                |    M     |     6.0 hrs    |     0 hrs     |     TBD     |
+| Login / Register Comps      |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| AccountDetails / Edit Comps |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| CreateThought Comp          |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Thoughts Comp               |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Sea Comp                    |    H     |     4.0 hrs    |     0 hrs     |     TBD     |
+| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
+| Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     0 hrs     |     TBD     |
 
 <br>
 
@@ -143,22 +238,28 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
-
-<br>
+![Buoy ERD](https://i.imgur.com/7d95EQG.png)
 
 ***
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+- Plug for github and portfolio.
+- Screen transitions.
+- Background animations.
+- Loading indicator.
+- Sea gentle auto-scroll, user can rewind or fast-forward.
+- Thoughts searchable by content in addition to tags.
+- Thought location storing and filtering.
+- Email verification.
+- Forgot password feature.
 
 ***
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+> Coming soon.
 
 ## Code Issues & Resolutions
 
-> Use this section to list of all major issues encountered and their resolution.
+> A of all major issues encountered and their resolution.
