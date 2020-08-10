@@ -245,19 +245,19 @@ src
 #### API Endpoint Documentation
 
 ```
-\users - index, post
-\users\:id - show, put, destroy
-\thoughts - index, post
+/users - index, post
+/users/:id - show, put, destroy
+/thoughts - index, post
   queries: color, tag
-\thoughts\:id - show, destroy
-\colors - index, post
-\colors\:id - show, put, destroy
-\tags - index, post
-\tags\:id - show, put, destroy
-\likes - index, post
-\likes\:id - show, destroy
-\profile_pics - index
-\profile_pics\:id - show
+/thoughts/:id - show, destroy
+/colors - index, post
+/colors/:id - show, put, destroy
+/tags - index, post
+/tags/:id - show, put, destroy
+/likes - index, post
+/likes/:id - show, destroy
+/profile_pics - index
+/profile_pics/:id - show
 ```
 
 ***
