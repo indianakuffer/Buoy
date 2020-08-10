@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_150657) do
+ActiveRecord::Schema.define(version: 2020_08_10_150953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "profile_pics", force: :cascade do |t|
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profile_pics_on_user_id"
+  end
 
   create_table "thoughts", force: :cascade do |t|
     t.string "content"
@@ -33,5 +41,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_150657) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "profile_pics", "users"
   add_foreign_key "thoughts", "users"
 end
