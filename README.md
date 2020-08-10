@@ -204,15 +204,15 @@ src
 | Task                        | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------- | :------: | :------------: | :-----------: | :---------: |
 | **Backend**                                                                           |
-| Initialize Rails            |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Scaffold Tables             |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Assign References           |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Assign Validations          |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Set Up Auth                 |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
-| Set Up Routes               |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Configure Controllers       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Rails Testing / Fixes       |    M     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Initialize Rails            |    H     |     0.5 hrs    |     0.25 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0.25 hrs     |     TBD     |
+| Scaffold Tables             |    H     |     0.5 hrs    |     0.25 hrs     |     TBD     |
+| Assign References           |    H     |     0.5 hrs    |     0.25 hrs     |     TBD     |
+| Assign Validations          |    H     |     0.5 hrs    |     0.25 hrs     |     TBD     |
+| Set Up Auth                 |    H     |     1.0 hrs    |     0.25 hrs     |     TBD     |
+| Set Up Routes               |    H     |     0.5 hrs    |     1.0 hrs      |     TBD     |
+| Configure Controllers       |    H     |     0.5 hrs    |     1.0 hrs      |     TBD     |
+| Rails Testing / Fixes       |    M     |     2.0 hrs    |     1.0 hrs      |     TBD     |
 | **Frontend**                                                                           |
 | Initialize React App        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
 | Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
@@ -230,7 +230,7 @@ src
 | Sea Comp                    |    H     |     4.0 hrs    |     0 hrs     |     TBD     |
 | Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
 | Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     0 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     4.5 hrs     |     TBD     |
 
 <br>
 
