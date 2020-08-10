@@ -1,3 +1,4 @@
 class ProfilePic < ApplicationRecord
-  belongs_to :user
+  has_many :users
+  validates :image, presence: true, uniqueness: true
 end

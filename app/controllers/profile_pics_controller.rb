@@ -1,5 +1,6 @@
 class ProfilePicsController < ApplicationController
   before_action :set_profile_pic, only: [:show, :update, :destroy]
+  before_action :authorize_request, only: [:index, :show, :create, :update, :destroy]
 
   # GET /profile_pics
   def index
@@ -46,6 +47,6 @@ class ProfilePicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def profile_pic_params
-      params.require(:profile_pic).permit(:image, :user_id)
+      params.require(:profile_pic).permit(:image)
     end
 end
