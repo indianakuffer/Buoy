@@ -201,15 +201,36 @@ src
 
 #### Time Estimates
 
-> Use this section to estimate the time necessary to build out each of the components you've described above.
-
-| Task                | Priority | Estimated Time | Time Invested | Actual Time |
-| ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
-| Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
-| TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
-
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evaluate possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
+| Task                        | Priority | Estimated Time | Time Invested | Actual Time |
+| --------------------------- | :------: | :------------: | :-----------: | :---------: |
+| **Backend**                                                                           |
+| Initialize Rails            |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Scaffold Tables             |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Assign References           |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Assign Validations          |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Auth                 |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
+| Set Up Routes               |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Configure Controllers       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Rails Testing / Fixes       |    M     |     2.0 hrs    |     0 hrs     |     TBD     |
+| **Frontend**                                                                           |
+| Initialize React App        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Remove React Fluff          |    L     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up File Directory       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Screen Routing       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
+| Set Up Services and Auth    |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
+| Set Up Component Shells     |    H     |     3.0 hrs    |     0 hrs     |     TBD     |
+| Initial Styling             |    M     |     3.0 hrs    |     0 hrs     |     TBD     |
+| Shared Comps                |    M     |     6.0 hrs    |     0 hrs     |     TBD     |
+| Login / Register Comps      |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| AccountDetails / Edit Comps |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| CreateThought Comp          |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Thoughts Comp               |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Sea Comp                    |    H     |     4.0 hrs    |     0 hrs     |     TBD     |
+| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
+| Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     0 hrs     |     TBD     |
 
 <br>
 
@@ -223,9 +244,13 @@ src
 
 ## Post-MVP
 
-> Ideas I've had that would be fun (or necessary) for my Post-MVP.
-
-- Custom user icons to select from.
+- Plug for github and portfolio.
+- Screen transitions.
+- Background animations.
+- Loading indicator.
+- Sea gentle auto-scroll, user can rewind or fast-forward.
+- Thoughts searchable by content in addition to tags.
+- Thought location storing and filtering.
 - Email verification.
 - Forgot password feature.
 
@@ -233,7 +258,7 @@ src
 
 ## Code Showcase
 
-> A brief code snippet of functionality that I'm proud of and a brief description.
+> Coming soon.
 
 ## Code Issues & Resolutions
 
