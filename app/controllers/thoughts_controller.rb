@@ -74,6 +74,22 @@ class ThoughtsController < ApplicationController
     render json: @thought, include: :likes
   end
 
+  # GET /thoughts/search?color=e64c3c&tag=first-post
+  def search
+    colorArray = params[:color].split(',') if params[:color]
+    tagArray = params[:tag].split(',') if params[:tag]
+
+    if colorArray && tagArray
+      @thoughts = Thought.all.select { |thought| (colorArray.include? thought.color.slice(1,7)) && ((thought.tags.map {|x| x.name} & tagArray).empty? == false) }
+    elsif colorArray 
+      @thoughts = Thought.all.select { |thought| colorArray.include? thought.color.slice(1,7) }
+    elsif tagArray
+      @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name} & tagArray).empty? == false }
+    end
+
+    render json: @thoughts, include: :tags
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_thought
