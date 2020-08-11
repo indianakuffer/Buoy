@@ -1,4 +1,4 @@
-import api from './api-helper'
+import api from './api-config'
 
 export const getAllProfilePics = async () => {
   const resp = await api.get('/profile_pics')

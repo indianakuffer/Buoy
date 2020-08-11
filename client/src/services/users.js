@@ -1,4 +1,4 @@
-import api from './api-helper'
+import api from './api-config'
 
 export const updateUser = async (id, userData) => {
   const resp = await api.put(`/users/${id}`, { user: userData })
