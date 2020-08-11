@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Login from './components/screens/Login';
 import Register from './components/screens/Register';
 import AccountDetails from './components/screens/AccountDetails';
+import AccountEdit from './components/screens/AccountEdit';
 
 const MainContainer = styled.main`
   position: relative;
@@ -60,6 +61,13 @@ function App() {
               </Route>
               <Route exact path='/account'>
                 <AccountDetails
+                  className='screen'
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/account/edit'>
+                <AccountEdit
                   className='screen'
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
