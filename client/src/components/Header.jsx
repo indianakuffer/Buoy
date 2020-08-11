@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { removeToken } from '../services/auth'
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -9,11 +10,23 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
 `
 
-export default function Header() {
+export default function Header(props) {
+  const history = useHistory()
+
+  const logout = async () => {
+    props.setCurrentUser(null)
+    removeToken()
+    history.push('/')
+  }
+
   return (
     <HeaderContainer>
       Hamburger
-      <Link to='/login'>Login</Link>
+      {props.currentUser ?
+        <button onClick={logout}>Logout</button>
+        :
+        <Link to='/login'>Login</Link>
+      }
     </HeaderContainer>
   )
 }

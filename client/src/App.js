@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <MainContainer>
         {transitions.map(({ item, props, key }) => (
           <animated.div key={key} style={props}>
