@@ -6,6 +6,6 @@ export const getAllProfilePics = async () => {
 }
 
 export const getOneProfilePic = async (id) => {
-  const resp = await api.get(`/profile_pics${id}`)
+  const resp = await api.get(`/profile_pics/${id}`)
   return resp.data
 }

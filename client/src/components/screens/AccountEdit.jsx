@@ -10,12 +10,13 @@ const AccountEditContainer = styled.div`
 const ImageSelect = styled.div`
   img {
     height: 80px;
+    border-radius: 50%;
   }
 `
 
 export default function AccountEdit(props) {
   const history = useHistory()
-  const [formData, setFormData] = useState({ username: '', email: '', password: '', confirm: '', profile_pic_id: '' })
+  const [formData, setFormData] = useState({ username: '', email: '', password: '', confirm: '', profile_pic_id: 2 })
   const [profilePics, setProfilePics] = useState(null)
 
   useEffect(() => {
@@ -77,9 +78,10 @@ export default function AccountEdit(props) {
       <h1>Edit Your Account</h1>
       {props.currentUser &&
         <>
+          {profilePics && <img src={profilePics[formData.profile_pic_id - 1].image} />}
           <ImageSelect>
             {profilePics && profilePics.map(pic => {
-              return <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} />
+              return <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} key={`pic-option-${pic.image}`} />
             })}
           </ImageSelect>
           <form onSubmit={handleSubmit}>
