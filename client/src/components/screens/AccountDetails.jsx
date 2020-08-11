@@ -31,7 +31,7 @@ export default function AccountDetails(props) {
     <AccountDetailsContainer className={props.className}>
       {props.currentUser &&
         <>
-          <h1>Hey, {props.currentUser.username}</h1>
+          <h1>Hey, {props.currentUser.username}!</h1>
           <Link to='/account/edit'><button>Edit Account</button></Link>
           <button onClick={handleDelete}>Delete Account</button>
         </>

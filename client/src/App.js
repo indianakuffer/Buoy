@@ -10,6 +10,9 @@ import Login from './components/screens/Login';
 import Register from './components/screens/Register';
 import AccountDetails from './components/screens/AccountDetails';
 import AccountEdit from './components/screens/AccountEdit';
+import CreateThought from './components/screens/CreateThought';
+import Thoughts from './components/screens/Thoughts';
+import Sea from './components/screens/Sea';
 
 const MainContainer = styled.main`
   position: relative;
@@ -73,6 +76,24 @@ function App() {
                   className='screen'
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/thoughts'>
+                <Thoughts
+                  className='screen'
+                  currentUser={currentUser}
+                />
+              </Route>
+              <Route exact path='/thoughts/new'>
+                <CreateThought
+                  className='screen'
+                  currentUser={currentUser}
+                />
+              </Route>
+              <Route exact path='/sea'>
+                <Sea
+                  className='screen'
+                  currentUser={currentUser}
                 />
               </Route>
             </Switch>
