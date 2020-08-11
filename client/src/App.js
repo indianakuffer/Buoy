@@ -7,9 +7,13 @@ import { __RouterContext } from 'react-router'
 import Landing from './components/screens/Landing'
 import Header from './components/Header';
 import Login from './components/screens/Login';
+import Register from './components/screens/Register';
 
 const MainContainer = styled.main`
   position: relative;
+  .screen {
+    position: absolute;
+  }
 `
 
 function App() {
@@ -37,10 +41,19 @@ function App() {
           <animated.div key={key} style={props}>
             <Switch location={item}>
               <Route exact path='/'>
-                <Landing />
+                <Landing
+                  className='screen'
+                />
               </Route>
               <Route exact path='/login'>
                 <Login
+                  className='screen'
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/register'>
+                <Register
+                  className='screen'
                   setCurrentUser={setCurrentUser}
                 />
               </Route>

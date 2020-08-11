@@ -22,9 +22,10 @@ export default function Header(props) {
   return (
     <HeaderContainer>
       Hamburger
-      {props.currentUser ?
+      {props.currentUser &&
         <button onClick={logout}>Logout</button>
-        :
+      }
+      {!props.currentUser &&
         <Link to='/login'>Login</Link>
       }
     </HeaderContainer>
