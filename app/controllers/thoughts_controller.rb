@@ -82,7 +82,7 @@ class ThoughtsController < ApplicationController
       @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name} & tagArray).empty? == false }
     end
 
-    render json: @thoughts, include: :tags
+    render json: @thoughts, include: [:tags, :likes]
   end
 
   private
