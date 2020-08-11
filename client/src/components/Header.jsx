@@ -13,7 +13,7 @@ const HeaderContainer = styled.header`
 export default function Header(props) {
   const history = useHistory()
   const location = useLocation()
-  console.log(location)
+
   const logout = async () => {
     props.setCurrentUser(null)
     removeToken()
@@ -23,9 +23,16 @@ export default function Header(props) {
   return (
     <HeaderContainer>
       Hamburger
-      {props.currentUser && <button onClick={logout}>Logout</button>}
-      {!props.currentUser && location.pathname === '/login' && <Link to='/register'>Register</Link>}
-      {!props.currentUser && location.pathname !== '/login' && <Link to='/login'>Login</Link>}
+      <div>
+        {props.currentUser &&
+          <>
+            <Link to='/account'><button>Account</button></Link>
+            <button onClick={logout}>Logout</button>
+          </>
+        }
+        {!props.currentUser && location.pathname === '/login' && <Link to='/register'>Register</Link>}
+        {!props.currentUser && location.pathname !== '/login' && <Link to='/login'>Login</Link>}
+      </div>
     </HeaderContainer>
   )
 }

@@ -8,6 +8,7 @@ import Landing from './components/screens/Landing'
 import Header from './components/Header';
 import Login from './components/screens/Login';
 import Register from './components/screens/Register';
+import AccountDetails from './components/screens/AccountDetails';
 
 const MainContainer = styled.main`
   position: relative;
@@ -54,6 +55,13 @@ function App() {
               <Route exact path='/register'>
                 <Register
                   className='screen'
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/account'>
+                <AccountDetails
+                  className='screen'
+                  currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
               </Route>
