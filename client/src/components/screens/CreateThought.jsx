@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { postThought } from '../../services/thoughts'
+import { useHistory } from 'react-router-dom'
+import { postThought, giveThoughtTag } from '../../services/thoughts'
 
 const CreateThoughtContainer = styled.div`
 
@@ -35,6 +36,7 @@ const Circle = styled.div`
 `
 
 export default function CreateThought(props) {
+  const history = useHistory()
   const [formData, setFormData] = useState({ content: '', tag: '', color: 'fbffe2' })
   const [textColor, setTextColor] = useState('086788')
   const [colorList, setColorList] = useState([['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']])
@@ -49,9 +51,16 @@ export default function CreateThought(props) {
     try {
       const { content, color, tag } = formData
       const resp = await postThought({ content: content, color: color })
-      console.log(resp)
-      // props.setCurrentUser(userData)
-      // history.push('/')
+      if (tag != '') { setTag(resp.id, tag) }
+      history.push('/')
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  const setTag = async (id, tag) => {
+    try {
+      const resp = await giveThoughtTag(id, tag)
     } catch (error) {
       alert(error)
     }
@@ -63,7 +72,7 @@ export default function CreateThought(props) {
   }
 
   return (
-    <CreateThoughtContainer>
+    <CreateThoughtContainer className={props.className}>
       <h1>How are you feeling?</h1>
       <NewThought color={`#${formData.color}`}>
         <StyledForm textColor={textColor}>
