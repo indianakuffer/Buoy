@@ -37,8 +37,8 @@ tags = [
 Tag.create(tags)
 
 thoughts = [
-  {content: "Hello, world!", user: @admin, color: "#f0c419"},
-  {content: "Hello again, world!", user: @admin, color: "#fbffe2"}
+  {content: "Hello, world!", user: @admin, color: "f0c419"},
+  {content: "Hello again, world!", user: @admin, color: "fbffe2"}
 ]
 Thought.create(thoughts)
 

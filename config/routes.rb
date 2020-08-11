@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/thoughts/search', to: 'thoughts#search'
   put '/thoughts/:id/tags/:tag_name', to: 'thoughts#add_tag'
   put '/thoughts/:id/like', to: 'thoughts#toggle_like'
+  get '/users/:id/thoughts', to: 'users#thoughts'
 
   resources :tags
   resources :likes

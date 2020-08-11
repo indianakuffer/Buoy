@@ -52,7 +52,7 @@ export default function CreateThought(props) {
       const { content, color, tag } = formData
       const resp = await postThought({ content: content, color: color })
       if (tag != '') { setTag(resp.id, tag) }
-      history.push('/')
+      history.push('/thoughts')
     } catch (error) {
       alert(error)
     }
