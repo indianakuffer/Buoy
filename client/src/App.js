@@ -20,15 +20,17 @@ const MainContainer = styled.main`
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
+  const { location } = useContext(__RouterContext)
 
-  useEffect(() => { handleVerify() }, [])
+  useEffect(() => {
+    handleVerify()
+  }, [])
 
   const handleVerify = async () => {
     const userData = await verifyUser()
     setCurrentUser(userData)
   }
 
-  const { location } = useContext(__RouterContext)
   const transitions = useTransition(location, location => location.pathname, {
     from: { opacity: 0 },
     enter: { opacity: 1 },

@@ -2,14 +2,29 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { updateUser } from '../../services/users'
+import { getAllProfilePics } from '../../services/profile_pics'
 
 const AccountEditContainer = styled.div`
 
+`
+const ImageSelect = styled.div`
+  img {
+    height: 80px;
+  }
 `
 
 export default function AccountEdit(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirm: '', profile_pic_id: '' })
+  const [profilePics, setProfilePics] = useState(null)
+
+  useEffect(() => {
+    getUserInfo()
+  }, [props.currentUser])
+
+  useEffect(() => {
+    getProfilePics()
+  }, [])
 
   const getUserInfo = () => {
     if (props.currentUser) {
@@ -22,9 +37,14 @@ export default function AccountEdit(props) {
     }
   }
 
-  useEffect(() => {
-    getUserInfo()
-  }, [props.currentUser])
+  const getProfilePics = async () => {
+    try {
+      const resp = await getAllProfilePics()
+      setProfilePics(resp)
+    } catch (error) {
+      alert(error)
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -57,6 +77,11 @@ export default function AccountEdit(props) {
       <h1>Edit Your Account</h1>
       {props.currentUser &&
         <>
+          <ImageSelect>
+            {profilePics && profilePics.map(pic => {
+              return <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} />
+            })}
+          </ImageSelect>
           <form onSubmit={handleSubmit}>
             <label htmlFor='username'>
               <input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
