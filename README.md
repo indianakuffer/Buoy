@@ -214,12 +214,12 @@ src
 | Configure Controllers       |    H     |     0.5 hrs    |     1.0 hrs      |     TBD     |
 | Rails Testing / Fixes       |    M     |     2.0 hrs    |     1.0 hrs      |     TBD     |
 | **Frontend**                                                                           |
-| Initialize React App        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Install Dependencies        |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Remove React Fluff          |    L     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Set Up File Directory       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Set Up Screen Routing       |    H     |     0.5 hrs    |     0 hrs     |     TBD     |
-| Set Up Services and Auth    |    H     |     1.0 hrs    |     0 hrs     |     TBD     |
+| Initialize React App        |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
+| Install Dependencies        |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
+| Remove React Fluff          |    L     |     0.5 hrs    |     0.12 hrs     |     TBD     |
+| Set Up File Directory       |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
+| Set Up Screen Routing       |    H     |     0.5 hrs    |     0 hrs        |     TBD     |
+| Set Up Services and Auth    |    H     |     1.0 hrs    |     0.5 hrs      |     TBD     |
 | Set Up Component Shells     |    H     |     3.0 hrs    |     0 hrs     |     TBD     |
 | Initial Styling             |    M     |     3.0 hrs    |     0 hrs     |     TBD     |
 | Shared Comps                |    M     |     6.0 hrs    |     0 hrs     |     TBD     |
@@ -230,7 +230,7 @@ src
 | Sea Comp                    |    H     |     4.0 hrs    |     0 hrs     |     TBD     |
 | Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
 | Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     4.5 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     5.5 hrs     |     TBD     |
 
 <br>
 
