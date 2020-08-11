@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 import { loginUser } from '../../services/auth'
 
 const LoginContainer = styled.div`
-  position: absolute;
 `
 
 export default function Login(props) {
@@ -28,7 +27,7 @@ export default function Login(props) {
   }
 
   return (
-    <LoginContainer>
+    <LoginContainer className={props.className}>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='username'>

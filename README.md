@@ -213,24 +213,24 @@ src
 | Set Up Routes               |    H     |     0.5 hrs    |     1.0 hrs      |     TBD     |
 | Configure Controllers       |    H     |     0.5 hrs    |     1.0 hrs      |     TBD     |
 | Rails Testing / Fixes       |    M     |     2.0 hrs    |     1.0 hrs      |     TBD     |
-| **Frontend**                                                                           |
+| **Frontend**                                                                             |
 | Initialize React App        |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
 | Install Dependencies        |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
 | Remove React Fluff          |    L     |     0.5 hrs    |     0.12 hrs     |     TBD     |
 | Set Up File Directory       |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
-| Set Up Screen Routing       |    H     |     0.5 hrs    |     0 hrs        |     TBD     |
+| Set Up Screen Routing       |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
 | Set Up Services and Auth    |    H     |     1.0 hrs    |     0.5 hrs      |     TBD     |
-| Set Up Component Shells     |    H     |     3.0 hrs    |     0 hrs     |     TBD     |
+| Set Up Component Shells     |    H     |     3.0 hrs    |     0.12 hrs     |     TBD     |
 | Initial Styling             |    M     |     3.0 hrs    |     0 hrs     |     TBD     |
 | Shared Comps                |    M     |     6.0 hrs    |     0 hrs     |     TBD     |
-| Login / Register Comps      |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
+| Login / Register Comps      |    H     |     2.0 hrs    |     1 hrs     |     TBD     |
 | AccountDetails / Edit Comps |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
 | CreateThought Comp          |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
 | Thoughts Comp               |    H     |     2.0 hrs    |     0 hrs     |     TBD     |
 | Sea Comp                    |    H     |     4.0 hrs    |     0 hrs     |     TBD     |
 | Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
 | Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     5.5 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     7.0 hrs     |     TBD     |
 
 <br>
 

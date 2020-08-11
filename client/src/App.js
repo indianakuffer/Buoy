@@ -7,22 +7,33 @@ import { __RouterContext } from 'react-router'
 import Landing from './components/screens/Landing'
 import Header from './components/Header';
 import Login from './components/screens/Login';
+import Register from './components/screens/Register';
+import AccountDetails from './components/screens/AccountDetails';
+import AccountEdit from './components/screens/AccountEdit';
+import CreateThought from './components/screens/CreateThought';
+import Thoughts from './components/screens/Thoughts';
+import Sea from './components/screens/Sea';
 
 const MainContainer = styled.main`
   position: relative;
+  .screen {
+    position: absolute;
+  }
 `
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
+  const { location } = useContext(__RouterContext)
 
-  useEffect(() => { handleVerify() }, [])
+  useEffect(() => {
+    handleVerify()
+  }, [])
 
   const handleVerify = async () => {
     const userData = await verifyUser()
     setCurrentUser(userData)
   }
 
-  const { location } = useContext(__RouterContext)
   const transitions = useTransition(location, location => location.pathname, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -31,17 +42,58 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <MainContainer>
         {transitions.map(({ item, props, key }) => (
           <animated.div key={key} style={props}>
             <Switch location={item}>
               <Route exact path='/'>
-                <Landing />
+                <Landing
+                  className='screen'
+                />
               </Route>
               <Route exact path='/login'>
                 <Login
+                  className='screen'
                   setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/register'>
+                <Register
+                  className='screen'
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/account'>
+                <AccountDetails
+                  className='screen'
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/account/edit'>
+                <AccountEdit
+                  className='screen'
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </Route>
+              <Route exact path='/thoughts'>
+                <Thoughts
+                  className='screen'
+                  currentUser={currentUser}
+                />
+              </Route>
+              <Route exact path='/thoughts/new'>
+                <CreateThought
+                  className='screen'
+                  currentUser={currentUser}
+                />
+              </Route>
+              <Route exact path='/sea'>
+                <Sea
+                  className='screen'
+                  currentUser={currentUser}
                 />
               </Route>
             </Switch>

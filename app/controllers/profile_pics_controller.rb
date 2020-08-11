@@ -1,6 +1,6 @@
 class ProfilePicsController < ApplicationController
   before_action :set_profile_pic, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [:index, :show, :create, :update, :destroy]
+  before_action :authorize_request, only: [:show, :create, :update, :destroy]
 
   # GET /profile_pics
   def index
