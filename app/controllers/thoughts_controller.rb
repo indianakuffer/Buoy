@@ -5,12 +5,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   def index
     @thoughts = Thought.all
-
     render json: @thoughts
-  end
-
-  def search
-
   end
 
   # GET /thoughts/1
@@ -24,7 +19,7 @@ class ThoughtsController < ApplicationController
     @thought.user = @current_user
 
     if @thought.save
-      render json: @thought, status: :created, location: @thought
+      render json: @thought, status: :created
     else
       render json: @thought.errors, status: :unprocessable_entity
     end
@@ -44,7 +39,7 @@ class ThoughtsController < ApplicationController
     @thought.destroy
   end
 
-  # PUT /thoughts/1/tags/2
+  # PUT /thoughts/1/tags/:tagname
   def add_tag
     @thought = Thought.find(params[:id])
 
