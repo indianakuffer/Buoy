@@ -1,4 +1,4 @@
-import api from './api-helper'
+import api from './api-config'
 
 export const getAllThoughts = async () => {
   const resp = await api.get('/thoughts')
