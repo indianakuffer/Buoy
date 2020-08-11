@@ -5,7 +5,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   def index
     @thoughts = Thought.all
-    render json: @thoughts
+    render json: @thoughts, include: [:likes, :tags]
   end
 
   # GET /thoughts/1
@@ -75,9 +75,9 @@ class ThoughtsController < ApplicationController
     tagArray = params[:tag].split(',') if params[:tag]
 
     if colorArray && tagArray
-      @thoughts = Thought.all.select { |thought| (colorArray.include? thought.color.slice(1,7)) && ((thought.tags.map {|x| x.name} & tagArray).empty? == false) }
+      @thoughts = Thought.all.select { |thought| (colorArray.include? thought.color) && ((thought.tags.map {|x| x.name} & tagArray).empty? == false) }
     elsif colorArray 
-      @thoughts = Thought.all.select { |thought| colorArray.include? thought.color.slice(1,7) }
+      @thoughts = Thought.all.select { |thought| colorArray.include? thought.color }
     elsif tagArray
       @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name} & tagArray).empty? == false }
     end

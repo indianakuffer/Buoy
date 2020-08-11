@@ -28,6 +28,7 @@ export default function Thoughts(props) {
             id={thought.id}
             color={thought.color}
             content={thought.content}
+            showTags={true}
             tags={thought.tags}
             likes={thought.likes}
             timestamp={thought.created_at}

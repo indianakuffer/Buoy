@@ -30,17 +30,13 @@ export default function ThoughtListing(props) {
     if (darkList.includes(props.color)) { setDarkText(true) }
   }, [])
 
-
-
-
-
   return (
     <ListingContainer color={props.color} darkText={darkText}>
       <TopRow>{props.content}</TopRow>
       <BottomRow>
         <div>{props.likes.length} likes</div>
         <div>
-          {props.tags.map((tag) => (
+          {props.showTags && props.tags.map((tag) => (
             <span key={`${props.id}-${tag.id}`}>#{tag.name}</span>
           ))}
         </div>

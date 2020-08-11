@@ -42,6 +42,6 @@ export const searchThoughts = async (colorArray, tagArray) => {
     tag = `&tag=${tagArray.join(',')}`
   }
 
-  const resp = await api.get('/thoughts/search?${}${}')
+  const resp = await api.get(`/thoughts/search?${color}${tag}`)
   return resp.data
 }
