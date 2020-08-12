@@ -1,6 +1,6 @@
 class Thought < ApplicationRecord
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_and_belongs_to_many :tags
 
   validates :content, presence: true, length: { maximum: 40 }

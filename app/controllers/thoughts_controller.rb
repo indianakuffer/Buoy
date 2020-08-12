@@ -66,7 +66,7 @@ class ThoughtsController < ApplicationController
       @like = @thought.likes.create(:user => @current_user)
     end
 
-    render json: @thought, include: :likes
+    render json: @thought, include: [:likes, :tags]
   end
 
   # GET /thoughts/search?color=e64c3c&tag=first-post
