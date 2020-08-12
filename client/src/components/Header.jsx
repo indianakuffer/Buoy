@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { removeToken } from '../services/auth'
 import ProfilePic from './shared/ProfilePic'
+import NavMenu from './NavMenu'
 
 const HeaderContainer = styled.header`
+  position: relative;
   width: 100%;
   height: 30px;
   display: flex;
   justify-content: space-between;
 `
-
 const Right = styled.div`
   display: flex;
   align-items: center;
@@ -22,6 +23,7 @@ const Right = styled.div`
 export default function Header(props) {
   const history = useHistory()
   const location = useLocation()
+  const [showMenu, setShowMenu] = useState(false)
 
   const logout = async () => {
     props.setCurrentUser(null)
@@ -29,9 +31,12 @@ export default function Header(props) {
     history.push('/')
   }
 
+  const toggleMenu = () => { setShowMenu(!showMenu) }
+
   return (
     <HeaderContainer>
-      <div>Hamburger</div>
+      <img src={require('../images/hamburger.svg')} onClick={toggleMenu} />
+      {showMenu && <NavMenu toggleMenu={toggleMenu} />}
       <Right>
         {props.currentUser &&
           <>
