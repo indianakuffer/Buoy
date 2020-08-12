@@ -222,8 +222,8 @@ src
 | Set Up Screen Routing       |    H     |     0.5 hrs    |     0.12 hrs     |     TBD     |
 | Set Up Services and Auth    |    H     |     1.0 hrs    |     0.5 hrs      |     TBD     |
 | Set Up Component Shells     |    H     |     3.0 hrs    |     0.12 hrs     |     TBD     |
-| Initial Styling             |    M     |     3.0 hrs    |     1 hrs     |     TBD     |
-| Shared Comps                |    M     |     6.0 hrs    |     2 hrs     |     TBD     |
+| Initial Styling             |    M     |     3.0 hrs    |     1.5 hrs     |     TBD     |
+| Shared Comps                |    M     |     6.0 hrs    |     2.5 hrs     |     TBD     |
 | Login / Register Comps      |    H     |     2.0 hrs    |     1 hrs     |     TBD     |
 | AccountDetails / Edit Comps |    H     |     2.0 hrs    |     1.5 hrs     |     TBD     |
 | CreateThought Comp          |    H     |     2.0 hrs    |     1.5 hrs     |     TBD     |
@@ -231,7 +231,7 @@ src
 | Sea Comp                    |    H     |     4.0 hrs    |     1.5 hrs     |     TBD     |
 | Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs     |     TBD     |
 | Extra                       |    H     |     5.0 hrs    |     0 hrs     |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     16.0 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     17.0 hrs     |     TBD     |
 
 <br>
 
