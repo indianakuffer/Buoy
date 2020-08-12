@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
+  user-select: none;
 `
 const Hamburger = styled.img`
   margin-left: 10px;
@@ -51,7 +52,7 @@ export default function Header(props) {
         {props.currentUser &&
           <>
             <Link to='/account'><ProfilePic size={30} currentUser={props.currentUser} /></Link>
-            <button onClick={logout}>Logout</button>
+            <a onClick={logout}>Logout</a>
           </>
         }
         {!props.currentUser && location.pathname === '/login' && <Link to='/register'>Register</Link>}
