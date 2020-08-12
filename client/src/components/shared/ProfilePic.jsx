@@ -26,6 +26,7 @@ export default function ProfilePic(props) {
 
   return (
     <ProfilePicContainer
+      className='profile-pic'
       size={props.size}
       onClick={props.onClick}
       currentUser={props.currentUser}

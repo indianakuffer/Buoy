@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   font-family: 'Playfair Display', serif;
   width: fit-content;
   &:hover {
-    filter: saturate(0.9);
+    filter: brightness(1.1);
   }
 `
 
