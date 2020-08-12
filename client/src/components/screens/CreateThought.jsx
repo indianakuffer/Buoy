@@ -4,14 +4,12 @@ import { useHistory } from 'react-router-dom'
 import { postThought, giveThoughtTag } from '../../services/thoughts'
 
 const CreateThoughtContainer = styled.div`
-
 `
 const NewThought = styled.div`
   display: flex;
   flex-flow: column;
   background-color: ${props => props.color};
 `
-
 const StyledForm = styled.form`
   display: flex;
   flex-flow: column;
@@ -34,12 +32,12 @@ const Circle = styled.div`
   background-color: #${props => props.color};
   border-radius: 50%;
 `
+const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']]
 
 export default function CreateThought(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ content: '', tag: '', color: 'fbffe2' })
   const [textColor, setTextColor] = useState('086788')
-  const [colorList, setColorList] = useState([['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -51,6 +49,7 @@ export default function CreateThought(props) {
     try {
       const { content, color, tag } = formData
       const resp = await postThought({ content: content, color: color })
+      // tags must be checked / set after thought posted
       if (tag != '') { setTag(resp.id, tag) }
       history.push('/thoughts')
     } catch (error) {
@@ -60,13 +59,14 @@ export default function CreateThought(props) {
 
   const setTag = async (id, tag) => {
     try {
-      const resp = await giveThoughtTag(id, tag)
+      await giveThoughtTag(id, tag)
     } catch (error) {
       alert(error)
     }
   }
 
   const updateTheme = (background, text) => {
+    // set form to selected background color w/ paired font color
     setFormData({ ...formData, color: background })
     setTextColor(text)
   }
@@ -94,7 +94,6 @@ export default function CreateThought(props) {
         </Colors>
       </NewThought>
       <button onClick={handleSubmit}>Send</button>
-
     </CreateThoughtContainer>
   )
 }

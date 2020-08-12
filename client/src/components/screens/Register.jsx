@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 import { registerUser } from '../../services/auth'
 
 const RegisterContainer = styled.div`
-
 `
 
 export default function Register(props) {

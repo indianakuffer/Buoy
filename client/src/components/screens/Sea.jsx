@@ -5,15 +5,12 @@ import ThoughtListing from '../shared/ThoughtListing'
 import SearchBar from '../SearchBar'
 
 const SeaContainer = styled.div`
-
 `
 
 export default function Sea(props) {
   const [thoughtList, setThoughtList] = useState(null)
 
-  useEffect(() => {
-    if (props.currentUser) { fetchThoughts() }
-  }, [props.currentUser])
+  useEffect(() => { if (props.currentUser) { fetchThoughts() } }, [props.currentUser])
 
   const fetchThoughts = async () => {
     const resp = await getAllThoughts()

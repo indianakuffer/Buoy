@@ -9,7 +9,6 @@ const Circle = styled.div`
   border: 2px solid ${props => props.active ? '#086788' : 'transparent'};
 `
 
-
 export default function SearchCircle(props) {
   const [active, setActive] = useState(false)
 

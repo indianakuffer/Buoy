@@ -9,7 +9,6 @@ const ListingContainer = styled.div`
   border: ${props => props.liked ? '4px solid red' : 'none'};
 `
 const TopRow = styled.div`
-
 `
 const BottomRow = styled.div`
   display: flex;
@@ -27,26 +26,35 @@ export default function ThoughtListing(props) {
   const [liked, setLiked] = useState(false)
 
   useEffect(() => {
+    // format timestamp
     const date = new Date(props.thoughtData.created_at)
     const year = new Intl.DateTimeFormat('en', { year: '2-digit' }).format(date)
     const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
     const weekday = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date)
     const day = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date)
     setTimestamp(`${weekday}, ${month} ${day}.${year}`)
-
+    // if color is in darklist, set font-color as dark
     if (darkList.includes(props.thoughtData.color)) { setDarkText(true) }
-
+    // if thought is already liked by user, set liked state true
     props.thoughtData.likes.forEach(like => { if (like.user_id === props.currentUser.id) { setLiked(true) } })
   }, [])
 
   const toggleLike = async () => {
-    const resp = await likeThought(props.thoughtData.id)
-    setLiked(!liked)
+    try {
+      const resp = await likeThought(props.thoughtData.id)
+      setLiked(!liked)
+    } catch (error) {
+      alert(error)
+    }
   }
 
   const deleteThought = async () => {
-    await destroyThought(props.thoughtData.id)
-    props.setSource(props.source.filter(thought => thought.id !== props.thoughtData.id))
+    try {
+      await destroyThought(props.thoughtData.id)
+      props.setSource(props.source.filter(thought => thought.id !== props.thoughtData.id))
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (

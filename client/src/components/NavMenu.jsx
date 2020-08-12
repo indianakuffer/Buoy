@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring'
+import { removeToken } from '../services/auth'
 
 const NavMenuContainer = styled.div`
   position: absolute;
@@ -30,20 +31,28 @@ const Menu = styled(animated.div)`
 `
 
 export default function NavMenu(props) {
-  const grow = useSpring({
+  const history = useHistory()
+
+  const slideIn = useSpring({
     from: { transform: 'translate3d(-100%,0,0)' },
     to: { transform: 'translate3d(0%,0,0)' },
-    config: { friction: 20 },
+    config: { friction: 20, tension: 200 },
   })
+
+  const handleLogout = async () => {
+    props.setCurrentUser(null)
+    removeToken()
+    history.push('/')
+  }
 
   return (
     <NavMenuContainer onClick={props.toggleMenu}>
-      <Menu style={grow}>
+      <Menu style={slideIn}>
         <Link to='/account'>My Account</Link>
         <Link to='/thoughts'>My Thoughts</Link>
         <Link to='/thoughts/new'>New Thought</Link>
         <Link to='/sea'>The Sea</Link>
-        <Link>Logout</Link>
+        <a onClick={handleLogout}>Logout</a>
       </Menu>
     </NavMenuContainer>
   )
