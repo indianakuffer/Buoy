@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { likeThought, destroyThought } from '../../services/thoughts'
 
 const ListingContainer = styled.div`
+  position: relative;
   background-color: #${props => props.color};
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
+  border: ${props => props.liked ? '4px solid red' : 'none'};
 `
 const TopRow = styled.div`
 
@@ -12,36 +15,49 @@ const BottomRow = styled.div`
   display: flex;
   justify-content: space-between;
 `
+const Delete = styled.div`
+  position: absolute;
+  right: 0;
+`
 
 export default function ThoughtListing(props) {
   const [darkText, setDarkText] = useState(false)
   const [timestamp, setTimestamp] = useState('')
   const darkList = ['f0c419', 'fbffe2']
+  const [liked, setLiked] = useState(false)
 
   useEffect(() => {
-
-    const date = new Date(props.timestamp)
+    const date = new Date(props.thoughtData.created_at)
     const year = new Intl.DateTimeFormat('en', { year: '2-digit' }).format(date)
     const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
     const weekday = new Intl.DateTimeFormat('en', { weekday: 'short' }).format(date)
     const day = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date)
     setTimestamp(`${weekday}, ${month} ${day}.${year}`)
 
-    if (darkList.includes(props.color)) { setDarkText(true) }
+    if (darkList.includes(props.thoughtData.color)) { setDarkText(true) }
+
+    props.thoughtData.likes.forEach(like => { if (like.user_id === props.currentUser.id) { setLiked(true) } })
   }, [])
 
+  const toggleLike = async () => {
+    const resp = await likeThought(props.thoughtData.id)
+    setLiked(!liked)
+  }
 
-
-
+  const deleteThought = async () => {
+    await destroyThought(props.thoughtData.id)
+    props.setSource(props.source.filter(thought => thought.id !== props.thoughtData.id))
+  }
 
   return (
-    <ListingContainer color={props.color} darkText={darkText}>
-      <TopRow>{props.content}</TopRow>
+    <ListingContainer color={props.thoughtData.color} darkText={darkText} liked={liked}>
+      {props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
+      <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
-        <div>{props.likes.length} likes</div>
+        <div onClick={toggleLike}>{props.thoughtData.likes.length} likes</div>
         <div>
-          {props.tags.map((tag) => (
-            <span key={`${props.id}-${tag.id}`}>#{tag.name}</span>
+          {props.showTags && props.thoughtData.tags.map((tag) => (
+            <span key={`${props.thoughtData.id}-${tag.id}`}>#{tag.name}</span>
           ))}
         </div>
         <div>{timestamp}</div>

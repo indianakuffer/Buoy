@@ -31,7 +31,7 @@ export default function Header(props) {
 
   return (
     <HeaderContainer>
-      Hamburger
+      <div>Hamburger</div>
       <Right>
         {props.currentUser &&
           <>

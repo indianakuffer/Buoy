@@ -25,12 +25,11 @@ export default function Thoughts(props) {
       {thoughtList &&
         thoughtList.map(thought => (
           <ThoughtListing
-            id={thought.id}
-            color={thought.color}
-            content={thought.content}
-            tags={thought.tags}
-            likes={thought.likes}
-            timestamp={thought.created_at}
+            thoughtData={thought}
+            currentUser={props.currentUser}
+            showTags={true}
+            source={thoughtList}
+            setSource={setThoughtList}
             key={`user-thought-${thought.id}`}
           />
         ))
