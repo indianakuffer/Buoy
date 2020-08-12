@@ -35,8 +35,8 @@ export default function Header(props) {
 
   return (
     <HeaderContainer>
-      <img src={require('../images/hamburger.svg')} onClick={toggleMenu} />
-      {showMenu && <NavMenu toggleMenu={toggleMenu} />}
+      <img src={require('../images/hamburger.svg')} onClick={toggleMenu} alt='nav menu icon' />
+      {showMenu && <NavMenu toggleMenu={toggleMenu} setCurrentUser={props.setCurrentUser} />}
       <Right>
         {props.currentUser &&
           <>

@@ -13,16 +13,13 @@ const SearchBarContainer = styled.div`
     }
   }
 `
-
+const colorList = ['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f']
 
 export default function SearchBar(props) {
   const [formData, setFormData] = useState('')
-  const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
   const [selectedColors, setSelectedColors] = useState([])
 
-  const handleChange = (e) => {
-    setFormData(e.target.value)
-  }
+  const handleChange = (e) => { setFormData(e.target.value) }
 
   const handleSubmit = async (e) => {
     e.preventDefault()

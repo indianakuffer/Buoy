@@ -15,9 +15,7 @@ const ProfilePicContainer = styled.div`
 export default function ProfilePic(props) {
   const [picUrl, setPicUrl] = useState('')
 
-  useEffect(() => {
-    loadPic()
-  }, [props.currentUser])
+  useEffect(() => { loadPic() }, [props.currentUser])
 
   const loadPic = async () => {
     if (props.currentUser) {

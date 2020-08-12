@@ -1,13 +1,8 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link, useHistory } from 'react-router-dom'
 import { destroyUser } from '../../services/users'
 import { removeToken } from '../../services/auth'
-
-
-const AccountDetailsContainer = styled.div`
-  
-`
 
 export default function AccountDetails(props) {
   const history = useHistory()
@@ -28,7 +23,7 @@ export default function AccountDetails(props) {
   }
 
   return (
-    <AccountDetailsContainer className={props.className}>
+    <div className={props.className}>
       {props.currentUser &&
         <>
           <h1>Hey, {props.currentUser.username}!</h1>
@@ -36,6 +31,6 @@ export default function AccountDetails(props) {
           <button onClick={handleDelete}>Delete Account</button>
         </>
       }
-    </AccountDetailsContainer>
+    </div>
   )
 }
