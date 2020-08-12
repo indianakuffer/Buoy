@@ -19,7 +19,10 @@ const Menu = styled(animated.div)`
   flex-flow: column;
   z-index: 11;
   width: fit-content;
+  border-radius: 0 13px 13px 0;
+  overflow: hidden;
   a {
+    font-size: 24px;
     color: inherit;
     text-decoration: none;
     padding: 5px 10px;

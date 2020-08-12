@@ -7,16 +7,26 @@ import NavMenu from './NavMenu'
 
 const HeaderContainer = styled.header`
   position: relative;
+  box-sizing: content-box;
   width: 100%;
   height: 30px;
+  padding: 5px 0;
   display: flex;
   justify-content: space-between;
+`
+const Hamburger = styled.img`
+  margin-left: 10px;
 `
 const Right = styled.div`
   display: flex;
   align-items: center;
   a {
+    color: white;
+    text-decoration: none;
     margin-right: 15px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
@@ -35,7 +45,7 @@ export default function Header(props) {
 
   return (
     <HeaderContainer>
-      <img src={require('../images/hamburger.svg')} onClick={toggleMenu} alt='nav menu icon' />
+      <Hamburger src={require('../images/hamburger.svg')} onClick={toggleMenu} alt='nav menu icon' />
       {showMenu && <NavMenu toggleMenu={toggleMenu} setCurrentUser={props.setCurrentUser} />}
       <Right>
         {props.currentUser &&
