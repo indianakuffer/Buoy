@@ -3,12 +3,62 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { updateUser } from '../../services/users'
 import { getAllProfilePics } from '../../services/profile_pics'
+import Input from '../shared/Input'
+import Button from '../shared/Button'
 
+const AccountEditContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  user-select: none;
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 100px;
+    margin: 50px 0 50px 0;
+  }
+`
+const ProfilePicSection = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+`
+const Pic = styled.img`
+  background-color: white;
+  border-radius: 50%;
+  height: 200px;
+  margin-right: 20px;
+`
 const ImageSelect = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 300px;
   img {
     height: 80px;
     border-radius: 50%;
+    background-color: white;
+    margin: 5px;
   }
+`
+const EditForm = styled.form`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 90%;
+  label {
+    width: 90%;
+    max-width: 400px;
+    margin: 12px 0;
+  }
+  button {
+    margin-top: 50px;
+  }
+`
+const Art = styled.img`
+  position: absolute;
+  height: 400px;
+  bottom: 0px;
+  right: 10%;
+  z-index: -1;
 `
 
 export default function AccountEdit(props) {
@@ -68,33 +118,36 @@ export default function AccountEdit(props) {
   }
 
   return (
-    <div className={props.className}>
+    <AccountEditContainer className={props.className}>
       <h1>Edit Your Account</h1>
       {props.currentUser &&
         <>
-          {profilePics && <img src={profilePics[formData.profile_pic_id - 1].image} alt='current profile icon' />}
-          <ImageSelect>
-            {profilePics && profilePics.map(pic => (
-              <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} alt='potential profile icon' key={`pic-option-${pic.image}`} />
-            ))}
-          </ImageSelect>
-          <form onSubmit={handleSubmit}>
+          <ProfilePicSection>
+            {profilePics && <Pic src={profilePics[formData.profile_pic_id - 1].image} alt='current profile icon' />}
+            <ImageSelect>
+              {profilePics && profilePics.map(pic => (
+                <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} alt='potential profile icon' key={`pic-option-${pic.image}`} />
+              ))}
+            </ImageSelect>
+          </ProfilePicSection>
+          <EditForm onSubmit={handleSubmit}>
             <label htmlFor='username'>
-              <input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
+              <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username' />
             </label>
             <label htmlFor='email'>
-              <input type='text' name='email' value={formData.email} onChange={handleChange} placeholder='email'></input>
+              <Input type='text' name='email' value={formData.email} onChange={handleChange} placeholder='email' />
             </label>
             <label htmlFor='password'>
-              <input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password'></input>
+              <Input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password' />
             </label>
             <label htmlFor='confirm'>
-              <input type='password' name='confirm' value={formData.confirm} onChange={handleChange} placeholder='confirm password'></input>
+              <Input type='password' name='confirm' value={formData.confirm} onChange={handleChange} placeholder='confirm password' />
             </label>
-            <button>Submit</button>
-          </form>
+            <Button bgColor='#e64c3c' color='white' forceSize='30px'>Submit</Button>
+          </EditForm>
         </>
       }
-    </div>
+      <Art src={require('../../images/lighthouse.svg')} />
+    </AccountEditContainer>
   )
 }
