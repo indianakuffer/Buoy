@@ -4,6 +4,7 @@ import { likeThought, destroyThought } from '../../services/thoughts'
 
 const ListingContainer = styled.div`
   position: relative;
+  width: fit-content;
   background-color: #${props => props.color};
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
   border: ${props => props.liked ? '4px solid red' : 'none'};

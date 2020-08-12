@@ -47,7 +47,7 @@ export default function AccountDetails(props) {
   }
 
   return (
-    <AccountDetailsContainer className={props.className}>
+    <AccountDetailsContainer>
       {props.currentUser &&
         <>
           <Title>Hey, {props.currentUser.username}!</Title>

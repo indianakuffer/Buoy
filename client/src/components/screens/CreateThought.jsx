@@ -72,7 +72,7 @@ export default function CreateThought(props) {
   }
 
   return (
-    <CreateThoughtContainer className={props.className}>
+    <CreateThoughtContainer>
       <h1>How are you feeling?</h1>
       <NewThought color={`#${formData.color}`}>
         <StyledForm textColor={textColor}>

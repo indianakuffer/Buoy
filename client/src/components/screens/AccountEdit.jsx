@@ -113,7 +113,7 @@ export default function AccountEdit(props) {
   }
 
   return (
-    <AccountEditContainer className={props.className}>
+    <AccountEditContainer>
       <Title>Edit Your Account</Title>
       {props.currentUser &&
         <>

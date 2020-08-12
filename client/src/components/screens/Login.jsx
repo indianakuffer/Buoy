@@ -60,7 +60,7 @@ export default function Login(props) {
   }
 
   return (
-    <LoginContainer className={props.className}>
+    <LoginContainer>
       <Title>Welcome back!</Title>
       <LoginForm onSubmit={handleSubmit}>
         <label htmlFor='username'>

@@ -23,7 +23,7 @@ export default function Sea(props) {
   }
 
   return (
-    <SeaContainer className={props.className}>
+    <SeaContainer>
       <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} />
       <h1>Sea</h1>
       {thoughtList &&

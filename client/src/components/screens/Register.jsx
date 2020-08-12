@@ -64,7 +64,7 @@ export default function Register(props) {
   }
 
   return (
-    <RegisterContainer className={props.className}>
+    <RegisterContainer>
       <Title>Sign Up</Title>
       <RegisterForm onSubmit={handleSubmit}>
         <label htmlFor='username'>

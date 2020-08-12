@@ -11,8 +11,16 @@ const ThoughtsContainer = styled.div`
   user-select: none;
 `
 const ThoughtsFeed = styled.div`
-  displkay: flex;
+  width: 100%;
+  display: flex;
   flex-flow: column;
+  align-items: center;
+  margin-top: 50px;
+  height: 70vh;
+  overflow: auto;
+  >* {
+    margin: 10px 0;
+  }
 `
 
 export default function Thoughts(props) {
@@ -26,7 +34,7 @@ export default function Thoughts(props) {
   }
 
   return (
-    <ThoughtsContainer className={props.className}>
+    <ThoughtsContainer>
       <Title>Your Thoughts</Title>
       <ThoughtsFeed>
         {thoughtList &&
