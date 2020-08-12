@@ -64,7 +64,7 @@ export default function Header(props) {
       {location.pathname !== '/' &&
         <Home to='/'>
           <span>Buoy</span>
-          <img src={require('../images/buoy.svg')} />
+          <img src={require('../images/buoy.svg')} alt='buoy icon' />
         </Home>
       }
       <Right>

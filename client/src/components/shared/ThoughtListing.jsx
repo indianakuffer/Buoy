@@ -59,7 +59,7 @@ export default function ThoughtListing(props) {
 
   return (
     <ListingContainer color={props.thoughtData.color} darkText={darkText} liked={liked}>
-      {props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
+      {props.currentUser && props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
         <div onClick={toggleLike}>{props.thoughtData.likes.length} likes</div>
