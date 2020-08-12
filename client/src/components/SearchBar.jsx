@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import SearchCircle from './SearchCircle'
 
 const SearchBarContainer = styled.div`
   display: flex;
   background-color: white;
+  input {
+    background: transparent;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
 `
-const Circle = styled.div`
-  background-color: #${props => props.color};
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-`
+
 
 export default function SearchBar(props) {
   const [formData, setFormData] = useState('')
@@ -48,11 +51,11 @@ export default function SearchBar(props) {
     <SearchBarContainer>
       <form onSubmit={handleSubmit}>
         <label htmlFor='search'>
-          <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...'></input>
+          <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' />
         </label>
       </form>
       {colorList.map(color => (
-        <Circle color={color} onClick={() => toggleColor(color)}></Circle>
+        <SearchCircle color={color} toggleColor={toggleColor} key={`searchCircle${color}`} />
       ))}
     </SearchBarContainer>
   )
