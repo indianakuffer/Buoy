@@ -78,10 +78,10 @@ export default function AccountEdit(props) {
       <h1>Edit Your Account</h1>
       {props.currentUser &&
         <>
-          {profilePics && <img src={profilePics[formData.profile_pic_id - 1].image} />}
+          {profilePics && <img src={profilePics[formData.profile_pic_id - 1].image} alt='current profile icon' />}
           <ImageSelect>
             {profilePics && profilePics.map(pic => {
-              return <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} key={`pic-option-${pic.image}`} />
+              return <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} alt='potential profile icon' key={`pic-option-${pic.image}`} />
             })}
           </ImageSelect>
           <form onSubmit={handleSubmit}>

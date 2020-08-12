@@ -5,7 +5,7 @@ class ThoughtsController < ApplicationController
   # GET /thoughts
   def index
     @thoughts = Thought.all
-    render json: @thoughts, include: [:likes, :tags]
+    render json: @thoughts.reverse, include: [:likes, :tags]
   end
 
   # GET /thoughts/1
@@ -82,7 +82,7 @@ class ThoughtsController < ApplicationController
       @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name} & tagArray).empty? == false }
     end
 
-    render json: @thoughts, include: [:tags, :likes]
+    render json: @thoughts.reverse, include: [:tags, :likes]
   end
 
   private

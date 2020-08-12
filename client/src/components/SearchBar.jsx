@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
 
 const SearchBarContainer = styled.div`
   display: flex;
@@ -8,12 +7,10 @@ const SearchBarContainer = styled.div`
 `
 
 export default function SearchBar(props) {
-  const history = useHistory()
   const [formData, setFormData] = useState({ search: '', })
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({ search: value })
+    setFormData({ search: e.target.value })
   }
 
   const handleSubmit = async (e) => {

@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/thoughts
   def thoughts
-    render json: @user.thoughts, include: [:tags, :likes]
+    render json: @user.thoughts.reverse, include: [:tags, :likes]
   end
 
   private
