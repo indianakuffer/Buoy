@@ -16,7 +16,7 @@ import Sea from './components/screens/Sea';
 
 const MainContainer = styled.main`
   position: relative;
-  .screen {
+  >* {
     position: absolute;
     // height calc is full screen - header height
     height: calc(100vh - 40px);
@@ -55,45 +55,38 @@ function App() {
               </Route>
               <Route exact path='/login'>
                 <Login
-                  className='screen'
                   setCurrentUser={setCurrentUser}
                 />
               </Route>
               <Route exact path='/register'>
                 <Register
-                  className='screen'
                   setCurrentUser={setCurrentUser}
                 />
               </Route>
               <Route exact path='/account'>
                 <AccountDetails
-                  className='screen'
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
               </Route>
               <Route exact path='/account/edit'>
                 <AccountEdit
-                  className='screen'
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
               </Route>
               <Route exact path='/thoughts'>
                 <Thoughts
-                  className='screen'
                   currentUser={currentUser}
                 />
               </Route>
               <Route exact path='/thoughts/new'>
                 <CreateThought
-                  className='screen'
                   currentUser={currentUser}
                 />
               </Route>
               <Route exact path='/sea'>
                 <Sea
-                  className='screen'
                   currentUser={currentUser}
                 />
               </Route>

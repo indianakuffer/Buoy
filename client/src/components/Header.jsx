@@ -18,6 +18,14 @@ const HeaderContainer = styled.header`
 const Hamburger = styled.img`
   margin-left: 10px;
 `
+const Home = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+`
 const Right = styled.div`
   display: flex;
   align-items: center;
@@ -48,6 +56,9 @@ export default function Header(props) {
     <HeaderContainer>
       <Hamburger src={require('../images/hamburger.svg')} onClick={toggleMenu} alt='nav menu icon' />
       {showMenu && <NavMenu toggleMenu={toggleMenu} setCurrentUser={props.setCurrentUser} />}
+      {location.pathname !== '/' &&
+        <Home to='/'>Buoy</Home>
+      }
       <Right>
         {props.currentUser &&
           <>

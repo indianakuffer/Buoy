@@ -4,24 +4,20 @@ import { useHistory } from 'react-router-dom'
 import { loginUser } from '../../services/auth'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
+import Title from '../shared/Title'
 
 const LoginContainer = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
   user-select: none;
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 100px;
-    margin: 50px 0 100px 0;
-  }
 `
 const LoginForm = styled.form`
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 90%;
+  margin-top: 100px;
   label {
     width: 90%;
     max-width: 400px;
@@ -64,8 +60,8 @@ export default function Login(props) {
   }
 
   return (
-    <LoginContainer className={props.className}>
-      <h1>Welcome back!</h1>
+    <LoginContainer>
+      <Title>Welcome back!</Title>
       <LoginForm onSubmit={handleSubmit}>
         <label htmlFor='username'>
           <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username' />
@@ -75,7 +71,7 @@ export default function Login(props) {
         </label>
         <Button bgColor='#e64c3c' color='white' forceSize='30px'>Log In</Button>
       </LoginForm>
-      <Art src={require('../../images/lifepreserve.svg')} />
+      <Art src={require('../../images/lifepreserve.svg')} alt='life preserver' />
     </LoginContainer>
   )
 }

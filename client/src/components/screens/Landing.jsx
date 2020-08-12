@@ -38,12 +38,12 @@ const Art = styled.img`
 
 export default function Landing(props) {
   return (
-    <LandingContainer className={props.className}>
+    <LandingContainer>
       <h1>Buoy</h1>
       <p>Excited? Worried? Hungry? Write down your thoughts and feelings and cast them out to sea, then sit and watch the thoughts of others slowly drift by.
         Connect. Commiserate. Meditate. Share how you're doing. There are no names or judgements here.</p>
       <Link to='/register'><Button bgColor='#e64c3c' color='white' forceSize='34px'>Let's Get Started!</Button></Link>
-      <Art src={require('../../images/buoy.svg')} />
+      <Art src={require('../../images/buoy.svg')} alt='buoy' />
     </LandingContainer>
   )
 }

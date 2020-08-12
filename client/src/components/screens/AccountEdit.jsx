@@ -5,22 +5,17 @@ import { updateUser } from '../../services/users'
 import { getAllProfilePics } from '../../services/profile_pics'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
+import Title from '../shared/Title'
 
 const AccountEditContainer = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
   user-select: none;
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 100px;
-    margin: 50px 0 50px 0;
-  }
 `
 const ProfilePicSection = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin: 50px 0 20px 0;
 `
 const Pic = styled.img`
   background-color: white;
@@ -118,8 +113,8 @@ export default function AccountEdit(props) {
   }
 
   return (
-    <AccountEditContainer className={props.className}>
-      <h1>Edit Your Account</h1>
+    <AccountEditContainer>
+      <Title>Edit Your Account</Title>
       {props.currentUser &&
         <>
           <ProfilePicSection>
@@ -147,7 +142,7 @@ export default function AccountEdit(props) {
           </EditForm>
         </>
       }
-      <Art src={require('../../images/lighthouse.svg')} />
+      <Art src={require('../../images/lighthouse.svg')} alt='lighthouse' />
     </AccountEditContainer>
   )
 }

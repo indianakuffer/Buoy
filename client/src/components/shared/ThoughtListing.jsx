@@ -4,6 +4,7 @@ import { likeThought, destroyThought } from '../../services/thoughts'
 
 const ListingContainer = styled.div`
   position: relative;
+  width: fit-content;
   background-color: #${props => props.color};
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
   border: ${props => props.liked ? '4px solid red' : 'none'};
@@ -59,7 +60,7 @@ export default function ThoughtListing(props) {
 
   return (
     <ListingContainer color={props.thoughtData.color} darkText={darkText} liked={liked}>
-      {props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
+      {props.currentUser && props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
         <div onClick={toggleLike}>{props.thoughtData.likes.length} likes</div>
