@@ -61,6 +61,7 @@ The **Buoy** MVP will provide frontend user account creation, deletion, and upda
 |   React Router   | Routing for frontend. |
 |Styled Components | Styling management for React components.   |
 |   React Spring   | Physics-based animation library for React. |
+|     d3-ease      | Easing curves for animation tweaking. |
 
 <br>
 
