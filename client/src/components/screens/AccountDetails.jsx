@@ -25,6 +25,13 @@ const AccountDetailsContainer = styled.div`
     margin-bottom: 50px;
   }
 `
+const Art = styled.img`
+  position: absolute;
+  height: 400px;
+  bottom: 0px;
+  right: 10%;
+  z-index: -1;
+`
 
 export default function AccountDetails(props) {
   const history = useHistory()
@@ -54,6 +61,7 @@ export default function AccountDetails(props) {
           <Button onClick={handleDelete} bgColor='#e64c3c' color='white' forceSize='30px'>Delete Account</Button>
         </>
       }
+      <Art src={require('../../images/lighthouse.svg')} />
     </AccountDetailsContainer>
   )
 }
