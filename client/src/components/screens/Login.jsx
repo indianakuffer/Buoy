@@ -2,8 +2,45 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { loginUser } from '../../services/auth'
+import Button from '../shared/Button'
+import Input from '../shared/Input'
 
 const LoginContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  user-select: none;
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 100px;
+    margin: 50px 0 100px 0;
+  }
+`
+const LoginForm = styled.form`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 90%;
+  label {
+    width: 90%;
+    max-width: 400px;
+    margin: 12px 0;
+  }
+  button {
+    margin-top: 50px;
+  }
+`
+const Art = styled.img`
+  position: absolute;
+  height: 2000px;
+  top: -850px;
+  right: -1000px;
+  z-index: -1;
+  animation: sine 4s alternate infinite ease-in-out;
+  @keyframes sine {
+    to { transform: translatey(50px);}
+  }
 `
 
 export default function Login(props) {
@@ -28,16 +65,17 @@ export default function Login(props) {
 
   return (
     <LoginContainer className={props.className}>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>Welcome back!</h1>
+      <LoginForm onSubmit={handleSubmit}>
         <label htmlFor='username'>
-          <input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username'></input>
+          <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username' />
         </label>
         <label htmlFor='password'>
-          <input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password'></input>
+          <Input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password' />
         </label>
-        <button>Submit</button>
-      </form>
+        <Button bgColor='#e64c3c' color='white' forceSize='30px'>Log In</Button>
+      </LoginForm>
+      <Art src={require('../../images/lifepreserve.svg')} />
     </LoginContainer>
   )
 }
