@@ -9,6 +9,7 @@ const ThoughtsContainer = styled.div`
   flex-flow: column;
   align-items: center;
   user-select: none;
+  overflow: hidden;
 `
 const ThoughtsFeed = styled.div`
   display: flex;
@@ -23,6 +24,17 @@ const ThoughtsFeed = styled.div`
   }
   >* {
     margin: 10px 0;
+  }
+`
+const Art = styled.img`
+  position: absolute;
+  height: 350px;
+  bottom: 20px;
+  right: 5%;
+  z-index: -1;
+  animation: sine 4s alternate infinite ease-in-out;
+  @keyframes sine {
+    to { transform: translatey(50px);}
   }
 `
 
@@ -53,6 +65,7 @@ export default function Thoughts(props) {
           ))
         }
       </ThoughtsFeed>
+      <Art src={require('../../images/bottle.svg')} alt='message in a bottle' />
     </ThoughtsContainer>
   )
 }
