@@ -18,7 +18,6 @@ const MainContainer = styled.main`
   position: relative;
   >* {
     position: absolute;
-    // height calc is full screen - header height
     height: 100vh;
     width: 100%;
   }
