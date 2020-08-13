@@ -2,13 +2,22 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { postThought, giveThoughtTag } from '../../services/thoughts'
+import Title from '../shared/Title'
+import Button from '../shared/Button'
 
 const CreateThoughtContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  user-select: none;
 `
 const NewThought = styled.div`
+  margin: 50px 0;
   display: flex;
   flex-flow: column;
   background-color: ${props => props.color};
+  border-radius: 10px;
+  padding: 20px 20px 10px 20px;
 `
 const StyledForm = styled.form`
   display: flex;
@@ -18,19 +27,33 @@ const StyledForm = styled.form`
     background-color: transparent;
     color: #${props => props.textColor};
     border: none;
+    ::placeholder {
+      color: lightgrey;
+    }
     :focus {
       outline: none;
     }
   }
+  input[name='content'] {
+    font-size: 24px;
+  }
 `
 const Colors = styled.div`
   display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 `
-const Circle = styled.div`
-  height: 40px;
-  width: 40px;
+const Circle = styled.button`
+  height: 30px;
+  width: 30px;
+  margin: 5px;
   background-color: #${props => props.color};
   border-radius: 50%;
+  border: none;
+  :focus {
+    outline: none;
+    box-shadow: 0 0 2px 2px white;
+  }
 `
 const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']]
 
@@ -73,11 +96,11 @@ export default function CreateThought(props) {
 
   return (
     <CreateThoughtContainer>
-      <h1>How are you feeling?</h1>
+      <Title>How are you doing?</Title>
       <NewThought color={`#${formData.color}`}>
         <StyledForm textColor={textColor}>
           <label htmlFor='content'>
-            <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder='...type here...'></input>
+            <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
           </label>
           <label htmlFor='tag'>
             <input type='text' name='tag' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
@@ -93,7 +116,7 @@ export default function CreateThought(props) {
           ))}
         </Colors>
       </NewThought>
-      <button onClick={handleSubmit}>Send</button>
+      <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Send</Button>
     </CreateThoughtContainer>
   )
 }
