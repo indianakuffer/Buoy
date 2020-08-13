@@ -51,6 +51,9 @@ const Delete = styled.div`
   right: 5px;
   cursor: pointer;
   z-index: 1;
+  font-size: ${props => props.deleteConfirm === 'x' ? '16px' : '12px'};
+  background: ${props => props.deleteConfirm === 'x' ? 'transparent' : '#086788'};
+  color: ${props => props.deleteConfirm === 'x' ? 'inherit' : 'white'};
 `
 const Time = styled.div`
   margin-left: 10px;
@@ -59,6 +62,7 @@ const Time = styled.div`
 export default function ThoughtListing(props) {
   const [darkText, setDarkText] = useState(false)
   const [timestamp, setTimestamp] = useState('')
+  const [deleteConfirm, setDeleteConfirm] = useState('x')
   const [liked, setLiked] = useState(false)
   const darkList = ['f0c419', 'fbffe2']
   // alterby helps simulate the like count increasing/decreasing
@@ -85,7 +89,7 @@ export default function ThoughtListing(props) {
 
   const toggleLike = async () => {
     try {
-      const resp = await likeThought(props.thoughtData.id)
+      await likeThought(props.thoughtData.id)
       setLiked(!liked)
     } catch (error) {
       alert(error)
@@ -93,6 +97,10 @@ export default function ThoughtListing(props) {
   }
 
   const deleteThought = async () => {
+    if (deleteConfirm === 'x') {
+      setDeleteConfirm('delete?')
+      return
+    }
     try {
       await destroyThought(props.thoughtData.id)
       props.setSource(props.source.filter(thought => thought.id !== props.thoughtData.id))
@@ -103,7 +111,9 @@ export default function ThoughtListing(props) {
 
   return (
     <ListingContainer color={props.thoughtData.color} darkText={darkText} liked={liked}>
-      {props.currentUser && props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
+      {props.currentUser && props.thoughtData.user_id === props.currentUser.id &&
+        <Delete onClick={deleteThought} deleteConfirm={deleteConfirm}>{deleteConfirm}</Delete>
+      }
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
         <Likes onClick={toggleLike} liked={liked} darkText={darkText}>

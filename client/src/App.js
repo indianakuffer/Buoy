@@ -13,6 +13,7 @@ import AccountEdit from './components/screens/AccountEdit';
 import CreateThought from './components/screens/CreateThought';
 import Thoughts from './components/screens/Thoughts';
 import Sea from './components/screens/Sea';
+import PleaseLogin from './components/shared/PleaseLogin'
 
 const MainContainer = styled.main`
   position: relative;
@@ -20,6 +21,7 @@ const MainContainer = styled.main`
     position: absolute;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
   }
 `
 
@@ -67,27 +69,32 @@ function App() {
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/account/edit'>
                 <AccountEdit
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/thoughts'>
                 <Thoughts
                   currentUser={currentUser}
                 />
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/thoughts/new'>
                 <CreateThought
                   currentUser={currentUser}
                 />
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/sea'>
                 <Sea
                   currentUser={currentUser}
                 />
+                {!currentUser && <PleaseLogin />}
               </Route>
             </Switch>
           </animated.div>

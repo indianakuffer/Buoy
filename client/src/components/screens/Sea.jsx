@@ -29,7 +29,7 @@ const ThoughtsFeed = styled.div`
   flex-flow: column;
   min-width: 300px;
   height: 70vh;
-  z-index: -2;
+  z-index: 0;
   >* {
     margin-bottom: 45px;
   }
@@ -44,7 +44,7 @@ const TopCurtain = styled.div`
   background: #2c6ed5;
   width: 100vw;
   height: 200px;
-  z-index: -1;
+  z-index: 1;
 `
 
 export default function Sea(props) {
@@ -77,9 +77,9 @@ export default function Sea(props) {
 
   return (
     <SeaContainer>
-      <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} />
       <TopCurtain />
-      <Title style={{ backgroundColor: '#2c6ed5' }}>Sea</Title>
+      <Title>Sea</Title>
+      <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
           thoughtList.map(thought => (

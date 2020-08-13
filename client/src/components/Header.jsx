@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   user-select: none;
-  z-index: 1;
+  z-index: 2;
 `
 const Hamburger = styled.img`
   margin-left: 10px;

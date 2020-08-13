@@ -7,6 +7,8 @@ const SearchBarContainer = styled.div`
   background-color: white;
   padding: 5px 10px;
   border-radius: 10px;
+  width: fit-content;
+  z-index: 1;
   input {
     background: transparent;
     border: none;
@@ -15,7 +17,14 @@ const SearchBarContainer = styled.div`
       outline: none;
     }
   }
-  margin-top: 50px;
+`
+const Background = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: #2c6ed5;
+  padding: 20px;
+  z-index: 1;
 `
 const MagnifyingGlass = styled.button`
   width: 20px;
@@ -60,16 +69,18 @@ export default function SearchBar(props) {
   }
 
   return (
-    <SearchBarContainer>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='search'>
-          <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' />
-        </label>
-      </form>
-      {colorList.map(color => (
-        <SearchCircle color={color} toggleColor={toggleColor} key={`searchCircle${color}`} />
-      ))}
-      <MagnifyingGlass onClick={handleSubmit}></MagnifyingGlass>
-    </SearchBarContainer>
+    <Background>
+      <SearchBarContainer>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='search'>
+            <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' />
+          </label>
+        </form>
+        {colorList.map(color => (
+          <SearchCircle color={color} toggleColor={toggleColor} key={`searchCircle${color}`} />
+        ))}
+        <MagnifyingGlass onClick={handleSubmit}></MagnifyingGlass>
+      </SearchBarContainer>
+    </Background>
   )
 }
