@@ -6,7 +6,7 @@ import ProfilePic from './shared/ProfilePic'
 import NavMenu from './NavMenu'
 
 const HeaderContainer = styled.header`
-  position: relative;
+  position: fixed;
   box-sizing: content-box;
   width: 100%;
   height: 30px;
@@ -14,9 +14,11 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   user-select: none;
+  z-index: 1;
 `
 const Hamburger = styled.img`
   margin-left: 10px;
+  cursor: pointer;
 `
 const Home = styled(Link)`
   color: inherit;
@@ -31,6 +33,7 @@ const Right = styled.div`
   align-items: center;
   a {
     color: white;
+    cursor: pointer;
     text-decoration: none;
     margin-right: 15px;
     &:hover {

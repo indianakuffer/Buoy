@@ -7,24 +7,62 @@ const ListingContainer = styled.div`
   width: fit-content;
   background-color: #${props => props.color};
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
-  border: ${props => props.liked ? '4px solid red' : 'none'};
+  border-radius: 10px;
+  padding: 5px 8px;
 `
 const TopRow = styled.div`
+  margin-bottom: 3px;
+  font-size: 24px;
+  padding-right: 20px;
+  transform: translateY(-3px);
 `
 const BottomRow = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 12px;
+`
+const Likes = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  user-select: none;
+  cursor: pointer;
+  div {
+    margin-right: 2px;
+    height: 12px;
+    width: 12px;
+    background-image: url('${props => props.liked ? require('../../images/like-full.svg') : require('../../images/like-empty.svg')}');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: ${props => {
+    if (props.liked) {
+      return 'unset'
+    } else {
+      return props.darkText ? 'unset' : 'saturate(0) brightness(10)'
+    }
+  }}
+}
+`
+const Tags = styled.div`
+  margin-right: 10px;
 `
 const Delete = styled.div`
   position: absolute;
-  right: 0;
+  right: 5px;
+  cursor: pointer;
+  z-index: 1;
+`
+const Time = styled.div`
+  margin-left: 10px;
 `
 
 export default function ThoughtListing(props) {
   const [darkText, setDarkText] = useState(false)
   const [timestamp, setTimestamp] = useState('')
-  const darkList = ['f0c419', 'fbffe2']
   const [liked, setLiked] = useState(false)
+  const darkList = ['f0c419', 'fbffe2']
+  // alterby helps simulate the like count increasing/decreasing
+  const [alterBy, setAlterBy] = useState(0)
 
   useEffect(() => {
     // format timestamp
@@ -37,7 +75,12 @@ export default function ThoughtListing(props) {
     // if color is in darklist, set font-color as dark
     if (darkList.includes(props.thoughtData.color)) { setDarkText(true) }
     // if thought is already liked by user, set liked state true
-    props.thoughtData.likes.forEach(like => { if (like.user_id === props.currentUser.id) { setLiked(true) } })
+    props.thoughtData.likes.forEach(like => {
+      if (like.user_id === props.currentUser.id) {
+        setLiked(true)
+        setAlterBy(-1)
+      }
+    })
   }, [])
 
   const toggleLike = async () => {
@@ -63,13 +106,16 @@ export default function ThoughtListing(props) {
       {props.currentUser && props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
-        <div onClick={toggleLike}>{props.thoughtData.likes.length} likes</div>
-        <div>
-          {props.showTags && props.thoughtData.tags.map((tag) => (
-            <span key={`${props.thoughtData.id}-${tag.id}`}>#{tag.name}</span>
-          ))}
-        </div>
-        <div>{timestamp}</div>
+        <Likes onClick={toggleLike} liked={liked} darkText={darkText}>
+          <div />
+          {props.thoughtData.likes.length + alterBy + liked}
+        </Likes>
+        {props.showTags && props.thoughtData.tags.map((tag) => (
+          <Tags key={`Tag-${props.thoughtData.id}-${tag.name}`}>
+            <span key={`${props.thoughtData.id}-${tag.name}`}>#{tag.name}</span>
+          </Tags>
+        ))}
+        <Time>{timestamp}</Time>
       </BottomRow>
 
     </ListingContainer>

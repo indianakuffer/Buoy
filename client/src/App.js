@@ -19,7 +19,7 @@ const MainContainer = styled.main`
   >* {
     position: absolute;
     // height calc is full screen - header height
-    height: calc(100vh - 40px);
+    height: 100vh;
     width: 100%;
   }
 `
