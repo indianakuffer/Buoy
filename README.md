@@ -228,10 +228,10 @@ src
 | AccountDetails / Edit Comps |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | CreateThought Comp          |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | Thoughts Comp               |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
-| Sea Comp                    |    H     |     4.0 hrs    |     1.5 hrs      |     TBD     |
-| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0 hrs        |     TBD     |
+| Sea Comp                    |    H     |     4.0 hrs    |     3.5 hrs      |     TBD     |
+| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     0.5 hrs      |     TBD     |
 | Extra                       |    H     |     5.0 hrs    |     0 hrs        |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     18.75 hrs     |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     21.25 hrs     |     TBD     |
 
 <br>
 
