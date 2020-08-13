@@ -21,6 +21,7 @@ const MainContainer = styled.main`
     position: absolute;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
   }
 `
 
@@ -68,32 +69,32 @@ function App() {
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
-                {!props.currentUser && <PleaseLogin />}
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/account/edit'>
                 <AccountEdit
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
-                {!props.currentUser && <PleaseLogin />}
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/thoughts'>
                 <Thoughts
                   currentUser={currentUser}
                 />
-                {!props.currentUser && <PleaseLogin />}
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/thoughts/new'>
                 <CreateThought
                   currentUser={currentUser}
                 />
-                {!props.currentUser && <PleaseLogin />}
+                {!currentUser && <PleaseLogin />}
               </Route>
               <Route exact path='/sea'>
                 <Sea
                   currentUser={currentUser}
                 />
-                {!props.currentUser && <PleaseLogin />}
+                {!currentUser && <PleaseLogin />}
               </Route>
             </Switch>
           </animated.div>

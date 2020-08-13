@@ -7,8 +7,7 @@ const TitleContainer = styled.h1`
   font-weight: ${props => props.fontWeight ? props.fontWeight : 400};
   font-size: ${props => props.fontSize ? props.fontSize : '100px'};
   margin: ${props => props.margin ? props.margin : '50px 0 0 0'};
-  width: 100vw;
-  text-align: center;
+  z-index: 2;
 `
 
 export default function Title(props) {

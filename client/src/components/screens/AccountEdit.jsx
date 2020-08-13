@@ -6,6 +6,7 @@ import { getAllProfilePics } from '../../services/profile_pics'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 import Title from '../shared/Title'
+import Popup from '../shared/Popup'
 
 const AccountEditContainer = styled.div`
   display: flex;
@@ -60,6 +61,8 @@ export default function AccountEdit(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirm: '', profile_pic_id: 2 })
   const [profilePics, setProfilePics] = useState(null)
+  const [showError, setShowError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
 
   useEffect(() => { getProfilePics() }, [])
   useEffect(() => { getUserInfo() }, [props.currentUser])
@@ -93,11 +96,13 @@ export default function AccountEdit(props) {
     e.preventDefault()
     // Passwords must be filled and matching
     if (formData.password === '') {
-      alert('Password cannot be blank')
+      setErrorMessage('Password cannot be blank')
+      setShowError(true)
       return
     }
     if (formData.password !== formData.confirm) {
-      alert('Passwords must match')
+      setErrorMessage('Passwords must match')
+      setShowError(true)
       return
     }
     // update account info
@@ -108,7 +113,8 @@ export default function AccountEdit(props) {
       props.setCurrentUser(userData)
       history.push('/account')
     } catch (error) {
-      alert(error)
+      setErrorMessage('Invalid info')
+      setShowError(true)
     }
   }
 
@@ -143,6 +149,9 @@ export default function AccountEdit(props) {
         </>
       }
       <Art src={require('../../images/lighthouse.svg')} alt='lighthouse' />
+      {showError &&
+        <Popup content={errorMessage} closeFunction={() => setShowError(false)} />
+      }
     </AccountEditContainer>
   )
 }

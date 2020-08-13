@@ -5,6 +5,7 @@ import { registerUser } from '../../services/auth'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 import Title from '../shared/Title'
+import Popup from '../shared/Popup'
 
 const RegisterContainer = styled.div`
   display: flex;
@@ -42,6 +43,8 @@ const Art = styled.img`
 export default function Register(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirm: '' })
+  const [errorMessage, setErrorMessage] = useState('')
+  const [showError, setShowError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -51,7 +54,8 @@ export default function Register(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (formData.password !== formData.confirm) {
-      alert('Passwords do not match')
+      setErrorMessage('Passwords must match.')
+      setShowError(true)
       return
     }
     try {
@@ -59,7 +63,9 @@ export default function Register(props) {
       props.setCurrentUser(userData)
       history.push('/')
     } catch (error) {
-      alert(error)
+      console.log(error)
+      setErrorMessage(`Please make sure your email is valid, and your username is unique!`)
+      setShowError(true)
     }
   }
 
@@ -82,6 +88,9 @@ export default function Register(props) {
         <Button bgColor='#e64c3c' color='white' forceSize='30px'>Register</Button>
       </RegisterForm>
       <Art src={require('../../images/lifepreserve.svg')} alt='life preserver' />
+      {showError &&
+        <Popup content={errorMessage} closeFunction={() => setShowError(false)} />
+      }
     </RegisterContainer>
   )
 }

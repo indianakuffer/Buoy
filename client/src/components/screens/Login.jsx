@@ -5,6 +5,7 @@ import { loginUser } from '../../services/auth'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Title from '../shared/Title'
+import Popup from '../shared/Popup'
 
 const LoginContainer = styled.div`
   display: flex;
@@ -42,6 +43,8 @@ const Art = styled.img`
 export default function Login(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ username: '', password: '' })
+  const [showError, setShowError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -55,7 +58,9 @@ export default function Login(props) {
       props.setCurrentUser(userData)
       history.push('/')
     } catch (error) {
-      alert(error)
+      console.log(error)
+      setErrorMessage('Sorry, please try again!')
+      setShowError(true)
     }
   }
 
@@ -72,6 +77,9 @@ export default function Login(props) {
         <Button bgColor='#e64c3c' color='white' forceSize='30px'>Log In</Button>
       </LoginForm>
       <Art src={require('../../images/lifepreserve.svg')} alt='life preserver' />
+      {showError &&
+        <Popup content={errorMessage} closeFunction={() => setShowError(false)} />
+      }
     </LoginContainer>
   )
 }

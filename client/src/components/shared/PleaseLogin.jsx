@@ -39,6 +39,7 @@ export default function PleaseLogin() {
   const flyIn = useSpring({
     from: { opacity: 0, transform: 'translateY(-200%)' },
     to: { opacity: 1, transform: 'translateY(0%)' },
+    delay: 500,
     config: { friction: 30, mass: 2, tension: 170 }
   })
 
@@ -46,7 +47,7 @@ export default function PleaseLogin() {
     <PleaseContainer>
       <Message style={flyIn}>
         Uh oh, looks like you're not logged in!
-      <Link to='/login'>
+        <Link to='/login'>
           <Button bgColor='#e64c3c' color='white' forceSize='30px'>Log In</Button>
         </Link>
       </Message>

@@ -32,6 +32,16 @@ const Message = styled(animated.div)`
     margin-top: 40px;
   }
 `
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  * {
+    margin: 0 10px;
+  }
+`
+const ButtonBuffer = styled.div`
+  width: 20px;
+`
 
 export default function Popup(props) {
   const flyIn = useSpring({
@@ -41,17 +51,32 @@ export default function Popup(props) {
   })
 
   return (
-    <PleaseContainer>
-      <Message style={flyIn}>
+    <PleaseContainer onClick={props.closeFunction}>
+      <Message style={flyIn} onClick={e => e.stopPropagation()}>
         {props.content}
-        {props.button && props.link &&
-          <Link to={props.link}>
-            <Button bgColor={props.buttonColor} color='white' forceSize={props.buttonSize}>{props.buttonText}</Button>
-          </Link>
-        }
-        {props.button &&
-          <Button bgColor={props.buttonColor} color='white' forceSize={props.buttonSize}>{props.buttonText}</Button>
-        }
+        <ButtonContainer>
+          {props.buttonText && props.link &&
+            <Link to={props.link}>
+              <Button onClick={props.buttonOnClick} bgColor={props.buttonColor} color='white' forceSize={props.buttonSize}>{props.buttonText}</Button>
+            </Link>
+          }
+          {props.button2Text && props.link2 &&
+            <>
+              <ButtonBuffer />
+              <Link to={props.link2}>
+                <Button onClick={props.button2OnClick} bgColor={props.button2Color} color='white' forceSize={props.button2Size}>{props.button2Text}</Button>
+              </Link>
+            </>
+          }
+          {props.buttonText && !props.link &&
+            <Button onClick={props.buttonOnClick} bgColor={props.buttonColor} color='white' forceSize={props.buttonSize}>{props.buttonText}</Button>
+          }
+          {props.button2Text && !props.link2 &&
+            <>
+              <Button onClick={props.button2OnClick} bgColor={props.button2Color} color='white' forceSize={props.button2Size}>{props.button2Text}</Button>
+            </>
+          }
+        </ButtonContainer>
       </Message>
     </PleaseContainer>
   )

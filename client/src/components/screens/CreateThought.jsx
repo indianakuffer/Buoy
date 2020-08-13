@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { postThought, giveThoughtTag } from '../../services/thoughts'
 import Title from '../shared/Title'
 import Button from '../shared/Button'
+import Popup from '../shared/Popup'
 
 const CreateThoughtContainer = styled.div`
   display: flex;
@@ -12,6 +13,7 @@ const CreateThoughtContainer = styled.div`
   user-select: none;
 `
 const NewThought = styled.div`
+  position: relative;
   margin: 50px 0;
   display: flex;
   flex-flow: column;
@@ -55,12 +57,20 @@ const Circle = styled.button`
     box-shadow: 0 0 2px 2px white;
   }
 `
+const CharCount = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: ${props => props.length > 40 ? 'red' : '#' + props.textColor};
+  font-size: 12px;
+`
 const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']]
 
 export default function CreateThought(props) {
   const history = useHistory()
   const [formData, setFormData] = useState({ content: '', tag: '', color: 'fbffe2' })
   const [textColor, setTextColor] = useState('086788')
+  const [showError, setShowError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -76,7 +86,7 @@ export default function CreateThought(props) {
       if (tag != '') { setTag(resp.id, tag) }
       history.push('/thoughts')
     } catch (error) {
-      alert(error)
+      setShowError(true)
     }
   }
 
@@ -98,6 +108,7 @@ export default function CreateThought(props) {
     <CreateThoughtContainer>
       <Title>How are you doing?</Title>
       <NewThought color={`#${formData.color}`}>
+        <CharCount textColor={textColor} length={formData.content.length}>{formData.content.length}</CharCount>
         <StyledForm textColor={textColor}>
           <label htmlFor='content'>
             <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
@@ -117,6 +128,9 @@ export default function CreateThought(props) {
         </Colors>
       </NewThought>
       <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Send</Button>
+      {showError &&
+        <Popup content={'Thought must be 40 characters or less'} closeFunction={() => setShowError(false)} />
+      }
     </CreateThoughtContainer>
   )
 }
