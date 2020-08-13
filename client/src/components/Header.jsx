@@ -21,6 +21,10 @@ const Hamburger = styled.img`
   cursor: pointer;
 `
 const Home = styled(Link)`
+  position: absolute;
+  width: calc(20vw);
+  margin: 0 40vw;
+  text-align: center;
   color: inherit;
   text-decoration: none;
   font-family: 'Playfair Display', serif;

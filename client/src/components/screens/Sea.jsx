@@ -10,14 +10,13 @@ const SeaContainer = styled.div`
   flex-flow: column;
   align-items: center;
   user-select: none;
-  overflow: hidden;
 `
 const Art = styled.img`
   position: absolute;
   height: 350px;
   bottom: 20px;
   right: 5%;
-  z-index: -1;
+  z-index: -3;
   animation: sineFlip 6s alternate infinite ease-in-out;
   transform: scaleX(-1);
   @keyframes sineFlip {
@@ -26,24 +25,45 @@ const Art = styled.img`
 `
 const ThoughtsFeed = styled.div`
   display: flex;
+  position: absolute;
   flex-flow: column;
   min-width: 300px;
-  margin-top: 50px;
   height: 70vh;
-  overflow: auto;
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-  }
+  z-index: -2;
   >* {
-    margin: 45px 0;
+    margin-bottom: 45px;
   }
+  animation: scrollUp 5000s linear;
+  @keyframes scrollUp {
+    from {top: 100vh};
+    to { top: -10000vh};
+  }
+`
+const TopCurtain = styled.div`
+  position: absolute;
+  background: #2c6ed5;
+  width: 100vw;
+  height: 200px;
+  z-index: -1;
 `
 
 export default function Sea(props) {
   const [thoughtList, setThoughtList] = useState(null)
+  let [offset, setOffset] = useState(0)
 
-  useEffect(() => { if (props.currentUser) { fetchThoughts() } }, [props.currentUser])
+  useEffect(() => {
+    if (props.currentUser) { fetchThoughts() }
+    window.addEventListener('wheel', handleScroll)
+    window.addEventListener('touchmove', handleScroll)
+    return () => {
+      window.removeEventListener('wheel', handleScroll)
+      window.removeEventListener('touchmove', handleScroll)
+    }
+  }, [props.currentUser])
+
+  const handleScroll = (e) => {
+    setOffset(offset -= e.deltaY)
+  }
 
   const fetchThoughts = async () => {
     const resp = await getAllThoughts()
@@ -58,8 +78,9 @@ export default function Sea(props) {
   return (
     <SeaContainer>
       <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} />
-      <Title>Sea</Title>
-      <ThoughtsFeed>
+      <TopCurtain />
+      <Title style={{ backgroundColor: '#2c6ed5' }}>Sea</Title>
+      <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
           thoughtList.map(thought => (
             <ThoughtListing
@@ -72,6 +93,7 @@ export default function Sea(props) {
           ))
         }
       </ThoughtsFeed>
+
       <Art src={require('../../images/telescope.svg')} alt='message in a bottle' />
     </SeaContainer>
   )
