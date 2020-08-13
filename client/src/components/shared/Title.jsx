@@ -2,15 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 const TitleContainer = styled.h1`
+  position: relative;
   font-family: 'Playfair Display', serif;
   font-weight: ${props => props.fontWeight ? props.fontWeight : 400};
   font-size: ${props => props.fontSize ? props.fontSize : '100px'};
   margin: ${props => props.margin ? props.margin : '50px 0 0 0'};
+  width: 100vw;
+  text-align: center;
 `
 
 export default function Title(props) {
   return (
     <TitleContainer
+      style={props.style}
       fontSize={props.fontSize}
       fontWeight={props.fontWeight}
       color={props.color}

@@ -15,7 +15,7 @@ const SearchBarContainer = styled.div`
       outline: none;
     }
   }
-  margin-top: 10px;
+  margin-top: 50px;
 `
 const MagnifyingGlass = styled.button`
   width: 20px;
