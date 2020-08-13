@@ -1,5 +1,6 @@
 html {
   background-color: #2c6ed5;
+  overflow: hidden;
 }
 
 * {
