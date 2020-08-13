@@ -7,17 +7,42 @@ const ListingContainer = styled.div`
   width: fit-content;
   background-color: #${props => props.color};
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
-  border: ${props => props.liked ? '4px solid red' : 'none'};
+  border-radius: 10px;
+  padding: 5px 8px;
 `
 const TopRow = styled.div`
+  margin-bottom: 3px;
+  font-size: 24px;
+  padding-right: 20px;
+  transform: translateY(-3px);
 `
 const BottomRow = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 12px;
+`
+const Likes = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  div {
+    margin-right: 2px;
+    height: 12px;
+    width: 12px;
+    background-image: url('${props => props.liked ? require('../../images/like-full.svg') : require('../../images/like-empty.svg')}');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+`
+const Tags = styled.div`
+  margin-right: 10px;
 `
 const Delete = styled.div`
   position: absolute;
-  right: 0;
+  right: 5px;
+`
+const Time = styled.div`
+  margin-left: 10px;
 `
 
 export default function ThoughtListing(props) {
@@ -63,13 +88,16 @@ export default function ThoughtListing(props) {
       {props.currentUser && props.thoughtData.user_id === props.currentUser.id && <Delete onClick={deleteThought}>x</Delete>}
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
-        <div onClick={toggleLike}>{props.thoughtData.likes.length} likes</div>
-        <div>
-          {props.showTags && props.thoughtData.tags.map((tag) => (
-            <span key={`${props.thoughtData.id}-${tag.id}`}>#{tag.name}</span>
-          ))}
-        </div>
-        <div>{timestamp}</div>
+        <Likes onClick={toggleLike} liked={liked}>
+          <div />
+          {props.thoughtData.likes.length}
+        </Likes>
+        {props.showTags && props.thoughtData.tags.map((tag) => (
+          <Tags key={`Tag-${props.thoughtData.id}-${tag.name}`}>
+            <span key={`${props.thoughtData.id}-${tag.name}`}>#{tag.name}</span>
+          </Tags>
+        ))}
+        <Time>{timestamp}</Time>
       </BottomRow>
 
     </ListingContainer>

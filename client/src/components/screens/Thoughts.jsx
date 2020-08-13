@@ -11,13 +11,16 @@ const ThoughtsContainer = styled.div`
   user-select: none;
 `
 const ThoughtsFeed = styled.div`
-  width: 100%;
   display: flex;
   flex-flow: column;
-  align-items: center;
+  min-width: 300px;
   margin-top: 50px;
   height: 70vh;
   overflow: auto;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
   >* {
     margin: 10px 0;
   }
