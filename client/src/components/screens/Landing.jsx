@@ -69,7 +69,7 @@ export default function Landing(props) {
     <LandingContainer>
       <h1>Buoy</h1>
       <p>Excited? Worried? Hungry? Write down your thoughts and feelings and cast them out to sea, then sit and watch the thoughts of others slowly drift by.
-        Connect. Commiserate. Reflect. Share how you're doing without judgement, we promise.</p>
+        Connect, reflect, and share how you're doing without judgement. We promise.</p>
       <Link to='/register'><Button bgColor='#e64c3c' color='white' forceSize='34px'>Let's Get Started!</Button></Link>
       <Art src={require('../../images/buoy.svg')} alt='buoy' />
     </LandingContainer>
