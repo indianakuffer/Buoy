@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { loginUser } from '../../services/auth'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
@@ -26,6 +26,13 @@ const LoginForm = styled.form`
   }
   button {
     margin-top: 50px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
   }
 `
 const Art = styled.img`
@@ -83,6 +90,7 @@ export default function Login(props) {
         <label htmlFor='password'>
           <Input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password' />
         </label>
+        <Link to='/register'>Don't have an account?</Link>
         <Button bgColor='#e64c3c' color='white' forceSize='30px'>Log In</Button>
       </LoginForm>
       <Art src={require('../../images/lifepreserve.svg')} alt='life preserver' />

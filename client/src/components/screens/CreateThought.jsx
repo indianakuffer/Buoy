@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { postThought, giveThoughtTag } from '../../services/thoughts'
 import Title from '../shared/Title'
 import Button from '../shared/Button'
-import Popup from '../shared/Popup'
 
 const CreateThoughtContainer = styled.div`
   display: flex;
@@ -17,9 +16,17 @@ const NewThought = styled.div`
   margin: 50px 0;
   display: flex;
   flex-flow: column;
+  width: 50%;
+  max-width: 400px;
   background-color: ${props => props.color};
   border-radius: 10px;
   padding: 20px 20px 10px 20px;
+  @media only screen and (max-width: 768px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 `
 const StyledForm = styled.form`
   display: flex;
@@ -68,9 +75,24 @@ const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe
 
 export default function CreateThought(props) {
   const history = useHistory()
-  const [formData, setFormData] = useState({ content: '', tag: '', color: 'fbffe2' })
+  const [formData, setFormData] = useState({
+    content: '',
+    tag: '',
+    color: 'fbffe2',
+    location: { longitude: null, latitude: null }
+  })
   const [textColor, setTextColor] = useState('086788')
-  const [showError, setShowError] = useState(false)
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setFormData({
+          ...formData,
+          location: { longitude: position.coords.longitude, latitude: position.coords.latitude }
+        })
+      })
+    }
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -80,22 +102,28 @@ export default function CreateThought(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { content, color, tag } = formData
-      const resp = await postThought({ content: content, color: color })
-      // tags must be checked / set after thought posted
-      if (tag != '') { setTag(resp.id, tag) }
-      history.push('/thoughts')
-    } catch (error) {
-      setShowError(true)
-    }
-  }
-
-  const setTag = async (id, tag) => {
-    try {
-      await giveThoughtTag(id, tag)
+      const { content, color, tag, location } = formData
+      const resp = await postThought({ content: content, color: color, location: location })
+      // // tags must be checked / set after thought posted
+      if (tag != '') {
+        setTag(resp.id, tag.replace(/[#,!@$%^&*()<>?:;"]/g, '').split(' '))
+      } else {
+        history.push('/thoughts')
+      }
     } catch (error) {
       alert(error)
     }
+  }
+
+  const setTag = (id, tagArray) => {
+    tagArray.forEach(async (tag) => {
+      try {
+        await giveThoughtTag(id, tag)
+        history.push('/thoughts')
+      } catch (error) {
+        alert(error)
+      }
+    })
   }
 
   const updateTheme = (background, text) => {
@@ -109,13 +137,14 @@ export default function CreateThought(props) {
       <Title>How are you doing?</Title>
       <NewThought color={`#${formData.color}`}>
         <CharCount textColor={textColor} length={formData.content.length}>{formData.content.length}</CharCount>
-        <StyledForm textColor={textColor}>
+        <StyledForm textColor={textColor} onSubmit={handleSubmit}>
           <label htmlFor='content'>
             <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
           </label>
           <label htmlFor='tag'>
             <input type='text' name='tag' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
           </label>
+          <input type='submit' style={{ display: 'none' }} />
         </StyledForm>
         <Colors>
           {colorList.map(color => (
@@ -128,9 +157,6 @@ export default function CreateThought(props) {
         </Colors>
       </NewThought>
       <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Send</Button>
-      {showError &&
-        <Popup content={'Thought must be 40 characters or less'} closeFunction={() => setShowError(false)} />
-      }
     </CreateThoughtContainer>
   )
 }

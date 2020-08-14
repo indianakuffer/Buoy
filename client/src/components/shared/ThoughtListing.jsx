@@ -44,8 +44,14 @@ const Likes = styled.div`
   }}
 }
 `
-const Tags = styled.div`
+const TagContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 85%;
+`
+const Tag = styled.div`
   margin-right: 10px;
+  min-width: fit-content;
 `
 const Delete = styled.div`
   position: absolute;
@@ -121,11 +127,11 @@ export default function ThoughtListing(props) {
           <div />
           {props.thoughtData.likes.length + alterBy + liked}
         </Likes>
-        {props.showTags && props.thoughtData.tags.map((tag) => (
-          <Tags key={`Tag-${props.thoughtData.id}-${tag.name}`}>
-            <span key={`${props.thoughtData.id}-${tag.name}`}>#{tag.name}</span>
-          </Tags>
-        ))}
+        <TagContainer>
+          {props.showTags && props.thoughtData.tags.map((tag) => (
+            <Tag key={`${props.thoughtData.id}-${tag.name}${Math.random(999)}`}>#{tag.name}</Tag>
+          ))}
+        </TagContainer>
         <Time>{timestamp}</Time>
       </BottomRow>
 
