@@ -39,7 +39,7 @@ export const searchThoughts = async (colorArray, tagArray) => {
   }
 
   if (tagArray.length > 0) {
-    tag = `&tag=${tagArray.join(',')}`
+    tag = `&tag=${tagArray.join(',').toLowerCase()}`
   }
 
   const resp = await api.get(`/thoughts/search?${color}${tag}`)
