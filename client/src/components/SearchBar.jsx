@@ -53,7 +53,6 @@ const colorList = ['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f']
 
 export default function SearchBar(props) {
   const [formData, setFormData] = useState('')
-  const [selectedColors, setSelectedColors] = useState([])
 
   const handleChange = (e) => { setFormData(e.target.value) }
 
@@ -61,22 +60,14 @@ export default function SearchBar(props) {
     e.preventDefault()
     try {
       let formArray = formData.split(' ')
-      if (!formData) { formArray = [] }
-      if (!formData && selectedColors.length <= 0) {
+      if (!formData) {
+        formArray = []
         props.fetchThoughts()
       } else {
-        props.filterThoughts(selectedColors, formArray)
+        props.filterThoughts(formArray)
       }
     } catch (error) {
       alert(error)
-    }
-  }
-
-  const toggleColor = (hex) => {
-    if (selectedColors.includes(hex)) {
-      setSelectedColors(selectedColors.filter(color => color !== hex))
-    } else {
-      setSelectedColors([...selectedColors, hex])
     }
   }
 
@@ -90,7 +81,7 @@ export default function SearchBar(props) {
         </form>
         <div>
           {colorList.map(color => (
-            <SearchCircle color={color} toggleColor={toggleColor} key={`searchCircle${color}`} />
+            <SearchCircle color={color} setColorList={props.setColorList} colorList={props.colorList} key={`searchCircle${color}`} />
           ))}
           <MagnifyingGlass onClick={handleSubmit}></MagnifyingGlass>
         </div>

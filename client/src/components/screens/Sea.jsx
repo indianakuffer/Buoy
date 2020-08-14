@@ -55,6 +55,8 @@ const Art = styled.img`
 export default function Sea(props) {
   const [thoughtList, setThoughtList] = useState(null)
   let [offset, setOffset] = useState(0)
+  const [distanceFilter, setDistanceFilter] = useState(null)
+  const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
@@ -84,10 +86,10 @@ export default function Sea(props) {
     <SeaContainer>
       <TopCurtain />
       <Title>Sea</Title>
-      <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} />
+      <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} colorList={colorList} setColorList={setColorList} />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
-          thoughtList.map(thought => (
+          thoughtList.filter(thought => colorList.includes(thought.color)).map(thought => (
             <ThoughtListing
               thoughtData={thought}
               currentUser={props.currentUser}
