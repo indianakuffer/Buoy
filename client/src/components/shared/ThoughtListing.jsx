@@ -47,6 +47,7 @@ const Likes = styled.div`
 const TagContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
+  max-width: 85%;
 `
 const Tag = styled.div`
   margin-right: 10px;

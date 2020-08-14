@@ -29,7 +29,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const { location } = useContext(__RouterContext)
 
-  useEffect(() => { handleVerify() }, [])
+  useEffect(() => {
+    handleVerify()
+  }, [])
 
   const handleVerify = async () => {
     const userData = await verifyUser()
