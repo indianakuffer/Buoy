@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="045 Add Book - Flat.svg"
+   id="svg35"
+   version="1.1"
+   viewBox="0 0 32 32"
+   height="32"
+   width="32">
+  <metadata
+     id="metadata39">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="045---Add-Book"
+     inkscape:window-maximized="0"
+     inkscape:window-y="603"
+     inkscape:window-x="0"
+     inkscape:cy="6.5542186"
+     inkscape:cx="4.1921087"
+     inkscape:zoom="7.9171407"
+     showgrid="false"
+     id="namedview37"
+     inkscape:window-height="924"
+     inkscape:window-width="1875"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title10">045 - Add Book</title>
+  <desc
+     id="desc12">Created with Sketch.</desc>
+  <defs
+     id="defs14" />
+  <g
+     transform="translate(-26,-26)"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-width="1"
+     stroke="none"
+     id="Page-1">
+    <g
+       fill-rule="nonzero"
+       id="045---Add-Book">
+      <circle
+         style="fill:#008080"
+         r="16"
+         cy="42"
+         cx="42"
+         fill="#26B99A"
+         id="Oval" />
+      <path
+         fill="#ecf0f1"
+         id="path29"
+         d="m 50,39 h -5 v -5 c 0,-1.104569 -0.895431,-2 -2,-2 h -2 c -1.104569,0 -2,0.895431 -2,2 v 5 h -5 c -1.104569,0 -2,0.895431 -2,2 v 2 c 0,1.104569 0.895431,2 2,2 h 5 v 5 c 0,1.104569 0.895431,2 2,2 h 2 c 1.104569,0 2,-0.895431 2,-2 v -5 h 5 c 1.104569,0 2,-0.895431 2,-2 v -2 c 0,-1.104569 -0.895431,-2 -2,-2 z" />
+    </g>
+  </g>
+</svg>

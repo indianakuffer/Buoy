@@ -27,6 +27,12 @@ const Art = styled.img`
   bottom: 0px;
   right: 10%;
   z-index: -1;
+  @media only screen and (max-width: 768px) {
+    height: 300px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 200px;
+  }
 `
 
 export default function AccountDetails(props) {

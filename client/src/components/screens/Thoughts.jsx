@@ -12,12 +12,14 @@ const ThoughtsContainer = styled.div`
   overflow: hidden;
 `
 const ThoughtsFeed = styled.div`
+  position: relative;
   display: flex;
   flex-flow: column;
   min-width: 300px;
   margin-top: 50px;
   height: 70vh;
   overflow: auto;
+  max-width: 90%;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

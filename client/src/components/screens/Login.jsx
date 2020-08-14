@@ -38,6 +38,15 @@ const Art = styled.img`
   @keyframes sine {
     to { transform: translatey(50px);}
   }
+  @media only screen and (max-width: 768px) {
+    right: -1100px;
+    top: -885px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 1600px;
+    right: -1200px;
+    top: 100px;
+  }
 `
 
 export default function Login(props) {
