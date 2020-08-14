@@ -9,23 +9,27 @@ const ThoughtsContainer = styled.div`
   flex-flow: column;
   align-items: center;
   user-select: none;
-  overflow: hidden;
+  height: 100vh;
 `
 const ThoughtsFeed = styled.div`
   position: relative;
   display: flex;
   flex-flow: column;
   min-width: 300px;
-  margin-top: 50px;
-  height: 70vh;
+  height: auto;
   overflow: auto;
   max-width: 90%;
+  margin-top: 50px;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
   }
   >* {
-    margin: 10px 0;
+    margin: 0 0 20px 0;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+    margin-top: 25px;
   }
 `
 const Art = styled.img`
@@ -39,6 +43,7 @@ const Art = styled.img`
     to { transform: translatey(50px);}
   }
 `
+
 
 export default function Thoughts(props) {
   const [thoughtList, setThoughtList] = useState(null)

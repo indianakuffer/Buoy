@@ -15,9 +15,17 @@ const NewThought = styled.div`
   margin: 50px 0;
   display: flex;
   flex-flow: column;
+  width: 50%;
+  max-width: 400px;
   background-color: ${props => props.color};
   border-radius: 10px;
   padding: 20px 20px 10px 20px;
+  @media only screen and (max-width: 768px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 `
 const StyledForm = styled.form`
   display: flex;
