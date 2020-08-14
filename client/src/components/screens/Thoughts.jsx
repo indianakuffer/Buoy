@@ -12,6 +12,7 @@ const ThoughtsContainer = styled.div`
   overflow: hidden;
 `
 const ThoughtsFeed = styled.div`
+  position: relative;
   display: flex;
   flex-flow: column;
   min-width: 300px;
