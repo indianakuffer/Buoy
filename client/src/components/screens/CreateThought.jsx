@@ -12,6 +12,7 @@ const CreateThoughtContainer = styled.div`
   user-select: none;
 `
 const NewThought = styled.div`
+  position: relative;
   margin: 50px 0;
   display: flex;
   flex-flow: column;
@@ -63,6 +64,13 @@ const Circle = styled.button`
     box-shadow: 0 0 2px 2px white;
   }
 `
+const CharCount = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: ${props => props.length > 40 ? 'red' : '#' + props.textColor};
+  font-size: 12px;
+`
 const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']]
 
 export default function CreateThought(props) {
@@ -80,20 +88,26 @@ export default function CreateThought(props) {
     try {
       const { content, color, tag } = formData
       const resp = await postThought({ content: content, color: color })
-      // tags must be checked / set after thought posted
-      if (tag != '') { setTag(resp.id, tag) }
-      history.push('/thoughts')
+      // // tags must be checked / set after thought posted
+      if (tag != '') {
+        setTag(resp.id, tag.replace(/[#,!@$%^&*()<>?:;"]/g, '').split(' '))
+      } else {
+        history.push('/thoughts')
+      }
     } catch (error) {
       alert(error)
     }
   }
 
-  const setTag = async (id, tag) => {
-    try {
-      await giveThoughtTag(id, tag)
-    } catch (error) {
-      alert(error)
-    }
+  const setTag = (id, tagArray) => {
+    tagArray.forEach(async (tag) => {
+      try {
+        await giveThoughtTag(id, tag)
+        history.push('/thoughts')
+      } catch (error) {
+        alert(error)
+      }
+    })
   }
 
   const updateTheme = (background, text) => {
@@ -106,13 +120,15 @@ export default function CreateThought(props) {
     <CreateThoughtContainer>
       <Title>How are you doing?</Title>
       <NewThought color={`#${formData.color}`}>
-        <StyledForm textColor={textColor}>
+        <CharCount textColor={textColor} length={formData.content.length}>{formData.content.length}</CharCount>
+        <StyledForm textColor={textColor} onSubmit={handleSubmit}>
           <label htmlFor='content'>
             <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
           </label>
           <label htmlFor='tag'>
             <input type='text' name='tag' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
           </label>
+          <input type='submit' style={{ display: 'none' }} />
         </StyledForm>
         <Colors>
           {colorList.map(color => (
