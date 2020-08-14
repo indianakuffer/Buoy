@@ -75,13 +75,13 @@ const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe
 
 export default function CreateThought(props) {
   const history = useHistory()
+  const [textColor, setTextColor] = useState('086788')
   const [formData, setFormData] = useState({
     content: '',
     tag: '',
     color: 'fbffe2',
     location: { longitude: null, latitude: null }
   })
-  const [textColor, setTextColor] = useState('086788')
 
   useEffect(() => {
     if ("geolocation" in navigator) {

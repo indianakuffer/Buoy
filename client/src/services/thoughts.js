@@ -30,18 +30,12 @@ export const likeThought = async (id) => {
   return resp.data
 }
 
-export const searchThoughts = async (colorArray, tagArray) => {
-  let color = ''
+export const searchThoughts = async (tagArray) => {
   let tag = ''
-
-  if (colorArray.length > 0) {
-    color = `&color=${colorArray.join(',')}`
-  }
-
   if (tagArray.length > 0) {
     tag = `&tag=${tagArray.join(',').toLowerCase()}`
   }
 
-  const resp = await api.get(`/thoughts/search?${color}${tag}`)
+  const resp = await api.get(`/thoughts/search?${tag}`)
   return resp.data
 }
