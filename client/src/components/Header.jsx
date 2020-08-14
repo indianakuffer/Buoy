@@ -47,6 +47,7 @@ const Right = styled.div`
 `
 const AddThought = styled.img`
   height: 30px;
+  width: 30px;
 `
 
 export default function Header(props) {

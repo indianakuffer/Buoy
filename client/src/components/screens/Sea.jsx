@@ -11,6 +11,30 @@ const SeaContainer = styled.div`
   align-items: center;
   user-select: none;
 `
+const ThoughtsFeed = styled.div`
+display: flex;
+position: absolute;
+flex-flow: column;
+min-width: 300px;
+height: 70vh;
+z-index: 0;
+max-width: 90%;
+>* {
+  margin-bottom: 45px;
+}
+animation: scrollUp 5000s linear;
+@keyframes scrollUp {
+  from {top: 100vh};
+  to { top: -10000vh};
+}
+`
+const TopCurtain = styled.div`
+position: absolute;
+background: #2c6ed5;
+width: 100vw;
+height: 200px;
+z-index: 1;
+`
 const Art = styled.img`
   position: absolute;
   height: 350px;
@@ -22,29 +46,10 @@ const Art = styled.img`
   @keyframes sineFlip {
     to { transform: translateY(20px) scaleX(-1);}
   }
-`
-const ThoughtsFeed = styled.div`
-  display: flex;
-  position: absolute;
-  flex-flow: column;
-  min-width: 300px;
-  height: 70vh;
-  z-index: 0;
-  >* {
-    margin-bottom: 45px;
+  @media only screen and (max-width: 600px) {
+    right: -15%;
+    bottom: -50px;
   }
-  animation: scrollUp 5000s linear;
-  @keyframes scrollUp {
-    from {top: 100vh};
-    to { top: -10000vh};
-  }
-`
-const TopCurtain = styled.div`
-  position: absolute;
-  background: #2c6ed5;
-  width: 100vw;
-  height: 200px;
-  z-index: 1;
 `
 
 export default function Sea(props) {

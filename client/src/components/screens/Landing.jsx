@@ -23,6 +23,30 @@ const LandingContainer = styled.div`
     margin-top: 100px;
     align-self: center;
   }
+  @media only screen and (max-width: 768px) {
+    h1 {
+      font-size: 180px;
+    }
+    p {
+      width: 80%;
+    }
+    a {
+      margin-top: 50px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 120px;
+      margin: 40px 0 0 20px;
+    }
+    p {
+      width: 80%;
+      font-size: 28px;
+    }
+    a {
+      margin-top: 100px;
+    }
+  }
 `
 const Art = styled.img`
   position: absolute;
@@ -33,6 +57,10 @@ const Art = styled.img`
   animation: sine 4s alternate infinite ease-in-out;
   @keyframes sine {
     to { transform: translatey(50px);}
+  }
+  @media only screen and (max-width: 768px) {
+    height: 200px;
+    right: 5%;
   }
 `
 

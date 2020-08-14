@@ -17,12 +17,16 @@ const AccountEditContainer = styled.div`
 const ProfilePicSection = styled.div`
   display: flex;
   margin: 50px 0 20px 0;
+  max-width: 90%;
 `
 const Pic = styled.img`
   background-color: white;
   border-radius: 50%;
   height: 200px;
   margin-right: 20px;
+  @media only screen and (max-width: 600px) {
+    height: 150px;
+  }
 `
 const ImageSelect = styled.div`
   display: flex;
@@ -33,6 +37,11 @@ const ImageSelect = styled.div`
     border-radius: 50%;
     background-color: white;
     margin: 5px;
+  }
+  @media only screen and (max-width: 600px) {
+    img {
+      height: 60px;
+    }
   }
 `
 const EditForm = styled.form`
@@ -55,6 +64,12 @@ const Art = styled.img`
   bottom: 0px;
   right: 10%;
   z-index: -1;
+  @media only screen and (max-width: 768px) {
+    height: 100px;
+  }
+  @media only screen and (max-width: 600px) {
+    height: 100px;
+  }
 `
 
 export default function AccountEdit(props) {
@@ -144,7 +159,7 @@ export default function AccountEdit(props) {
             <label htmlFor='confirm'>
               <Input type='password' name='confirm' value={formData.confirm} onChange={handleChange} placeholder='confirm password' />
             </label>
-            <Button bgColor='#e64c3c' color='white' forceSize='30px'>Submit</Button>
+            <Button bgColor='#e64c3c' color='white' forceSize='30px'>Save</Button>
           </EditForm>
         </>
       }

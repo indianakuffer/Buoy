@@ -19,6 +19,7 @@ const ThoughtsFeed = styled.div`
   margin-top: 50px;
   height: 70vh;
   overflow: auto;
+  max-width: 90%;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

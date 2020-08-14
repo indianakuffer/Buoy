@@ -9,6 +9,9 @@ const TitleContainer = styled.h1`
   margin: ${props => props.margin ? props.margin : '50px 0 0 0'};
   z-index: 1;
   text-align: center;
+  @media only screen and (max-width: 600px) {
+    font-size: ${props => props.fontSize ? props.fontSize : '80px'};
+  }
 `
 
 export default function Title(props) {
