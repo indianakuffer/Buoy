@@ -51,8 +51,8 @@ const Art = styled.img`
   }
   @media only screen and (max-width: 600px) {
     height: 1600px;
-    right: -1200px;
-    top: 100px;
+    right: -1250px;
+    top: 0px;
   }
 `
 

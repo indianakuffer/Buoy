@@ -36,12 +36,12 @@ const LandingContainer = styled.div`
   }
   @media only screen and (max-width: 600px) {
     h1 {
-      font-size: 120px;
-      margin: 40px 0 0 20px;
+      font-size: 100px;
+      margin: 30px 0 0 20px;
     }
     p {
       width: 80%;
-      font-size: 28px;
+      font-size: 24px;
     }
     a {
       margin-top: 100px;

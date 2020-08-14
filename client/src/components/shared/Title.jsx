@@ -11,7 +11,7 @@ const TitleContainer = styled.h1`
   text-align: center;
   @media only screen and (max-width: 600px) {
     line-height: 1.1;
-    font-size: ${props => props.fontSize ? props.fontSize : '80px'};
+    font-size: ${props => props.fontSize ? props.fontSize : '60px'};
   }
 `
 
