@@ -17,9 +17,7 @@ export default function SearchCircle(props) {
   const handleClick = () => {
     if (props.colorList.includes(props.color)) {
       props.setColorList(props.colorList.filter(color => color !== props.color))
-    } else {
-      props.setColorList([...props.colorList, props.color])
-    }
+    } else { props.setColorList([...props.colorList, props.color]) }
     setActive(!active)
   }
 
