@@ -16,7 +16,7 @@ const AccountEditContainer = styled.div`
 `
 const ProfilePicSection = styled.div`
   display: flex;
-  margin: 50px 0 20px 0;
+  margin: 30px 0 20px 0;
   max-width: 90%;
 `
 const Pic = styled.img`
@@ -25,7 +25,7 @@ const Pic = styled.img`
   height: 200px;
   margin-right: 20px;
   @media only screen and (max-width: 600px) {
-    height: 150px;
+    height: 100px;
   }
 `
 const ImageSelect = styled.div`
@@ -40,7 +40,7 @@ const ImageSelect = styled.div`
   }
   @media only screen and (max-width: 600px) {
     img {
-      height: 60px;
+      height: 40px;
     }
   }
 `

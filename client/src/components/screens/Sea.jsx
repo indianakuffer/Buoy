@@ -55,21 +55,43 @@ const Art = styled.img`
 export default function Sea(props) {
   const [thoughtList, setThoughtList] = useState(null)
   let [offset, setOffset] = useState(0)
-  const [distanceFilter, setDistanceFilter] = useState(null)
   const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
+  let [touchStart, setTouchStart] = useState(0)
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
+
+  }, [props.currentUser])
+
+  useEffect(() => {
     window.addEventListener('wheel', handleScroll)
-    window.addEventListener('touchmove', handleScroll)
+    window.addEventListener('touchstart', processTouchstart)
+    window.addEventListener('touchmove', processTouchmove)
     return () => {
       window.removeEventListener('wheel', handleScroll)
-      window.removeEventListener('touchmove', handleScroll)
+      window.removeEventListener('touchstart', processTouchstart)
+      window.removeEventListener('touchmove', processTouchmove)
     }
-  }, [props.currentUser])
+  }, [touchStart])
+
+  const processTouchstart = (e) => {
+    let ts = e.touches[0].clientY
+    setTouchStart(ts)
+  }
+
+  const processTouchmove = (e) => {
+    let te = e.changedTouches[0].clientY
+    if (te < touchStart) {
+      setOffset(offset -= touchStart - te)
+    } else {
+      setOffset(offset += te - touchStart)
+    }
+    setTouchStart(te)
+  }
 
   const handleScroll = (e) => {
     setOffset(offset -= e.deltaY)
+    console.log(offset)
   }
 
   const fetchThoughts = async () => {

@@ -27,6 +27,9 @@ const RegisterForm = styled.form`
   button {
     margin-top: 50px;
   }
+  @media only screen and (max-width: 600px) {
+    margin-top: 80px;
+  }
 `
 const Art = styled.img`
   position: absolute;
@@ -37,6 +40,11 @@ const Art = styled.img`
   animation: sine 4s alternate infinite ease-in-out;
   @keyframes sine {
     to { transform: translatey(50px);}
+  }
+  @media only screen and (max-width: 600px) {
+    height: 1600px;
+    right: -1250px;
+    top: 0px;
   }
 `
 
