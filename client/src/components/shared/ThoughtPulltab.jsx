@@ -12,16 +12,13 @@ const Tab = styled(animated.div)`
   height: 40px;
   width: 40px;
   border-radius: 8px 0 0 8px;
-  z-index: 1;
+  z-index: 2;
   background-image: url('${require('../../images/plus.svg')}');
   background-size: 30px 30px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #2a9d8f;
   cursor: pointer;
-  :hover {
-
-  }
 `
 const Container = styled(animated.div)`
   position: relative;
