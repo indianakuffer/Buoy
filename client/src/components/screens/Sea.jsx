@@ -4,6 +4,7 @@ import { getAllThoughts, searchThoughts } from '../../services/thoughts'
 import ThoughtListing from '../shared/ThoughtListing'
 import Title from '../shared/Title'
 import SearchBar from '../SearchBar'
+import ThoughtPullTab from '../shared/ThoughtPulltab'
 
 const SeaContainer = styled.div`
   display: flex;
@@ -104,7 +105,7 @@ export default function Sea(props) {
 
   return (
     <SeaContainer>
-      <TopCurtain />
+      <ThoughtPullTab />
       <Title>Sea</Title>
       <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} colorList={colorList} setColorList={setColorList} />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
