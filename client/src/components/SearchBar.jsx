@@ -12,6 +12,7 @@ const SearchBarContainer = styled.div`
   width: fit-content;
   max-width: 100%;
   z-index: 1;
+  
   input {
     color: #086788; 
     font-size: 20px;
@@ -29,8 +30,9 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 20px 0 80px 0;
   z-index: 1;
+  background: linear-gradient(#2c6ed5 50%, transparent);
 `
 const MagnifyingGlass = styled.button`
   width: 20px;

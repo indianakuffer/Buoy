@@ -8,7 +8,6 @@ const Tab = styled(animated.div)`
   position: absolute;
   right: 0;
   top: 40px;
-  background-color: white;
   height: 40px;
   width: 40px;
   border-radius: 8px 0 0 8px;
@@ -19,6 +18,10 @@ const Tab = styled(animated.div)`
   background-repeat: no-repeat;
   background-color: #2a9d8f;
   cursor: pointer;
+  transition: 0.3s width ease;
+  :hover {
+    width: 60px;
+  }
 `
 const Container = styled(animated.div)`
   position: relative;

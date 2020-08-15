@@ -31,7 +31,7 @@ const ThoughtsFeed = styled.div`
 `
 const TopCurtain = styled.div`
   position: absolute;
-  background: linear-gradient(#2c6ed5 70%, transparent);
+  background: #2c6ed5;
   width: 100vw;
   height: 235px;
   z-index: 1;
