@@ -51,9 +51,9 @@ export default function NavMenu(props) {
   return (
     <NavMenuContainer onClick={props.toggleMenu}>
       <Menu style={slideIn}>
-        <Link to='/account'>My Account</Link>
+        {/* <Link to='/account'>My Account</Link> */}
         <Link to='/thoughts'>My Thoughts</Link>
-        <Link to='/thoughts/new'>New Thought</Link>
+        {/* <Link to='/thoughts/new'>New Thought</Link> */}
         <Link to='/sea'>The Sea</Link>
         <a onClick={handleLogout}>Logout</a>
       </Menu>
