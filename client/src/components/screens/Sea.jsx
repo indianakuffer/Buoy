@@ -33,7 +33,7 @@ const TopCurtain = styled.div`
   position: absolute;
   background: #2c6ed5;
   width: 100vw;
-  height: 235px;
+  height: 150px;
   z-index: 1;
 `
 const Art = styled.img`

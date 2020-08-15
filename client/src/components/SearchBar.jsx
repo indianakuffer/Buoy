@@ -24,6 +24,10 @@ const SearchBarContainer = styled.div`
     }
   }
   @media only screen and (max-width: 600px) {
+    max-width: 90%;
+    form {
+      max-width: 50%;
+    }
   }
 `
 const Background = styled.div`
@@ -45,6 +49,11 @@ const MagnifyingGlass = styled.button`
   border: none;
   margin-left: 15px;
   cursor: pointer;
+`
+const ColorHalf = styled.div`
+  @media only screen and (max-width: 600px) {
+      max-width: 50%;
+  }
 `
 const colorList = ['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f']
 
@@ -76,12 +85,12 @@ export default function SearchBar(props) {
             <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' />
           </label>
         </form>
-        <div>
+        <ColorHalf>
           {colorList.map(color => (
             <SearchCircle color={color} setColorList={props.setColorList} colorList={props.colorList} key={`searchCircle${color}`} />
           ))}
           <MagnifyingGlass onClick={handleSubmit}></MagnifyingGlass>
-        </div>
+        </ColorHalf>
       </SearchBarContainer>
     </Background>
   )
