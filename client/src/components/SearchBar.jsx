@@ -23,17 +23,12 @@ const SearchBarContainer = styled.div`
     }
   }
   @media only screen and (max-width: 600px) {
-    width: min-content;
-    input {
-      margin: 2px 0 5px 0;
-    }
   }
 `
 const Background = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  background: #2c6ed5;
   padding: 20px;
   z-index: 1;
 `

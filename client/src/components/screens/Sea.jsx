@@ -29,11 +29,11 @@ animation: scrollUp 5000s linear;
 }
 `
 const TopCurtain = styled.div`
-position: absolute;
-background: #2c6ed5;
-width: 100vw;
-height: 200px;
-z-index: 1;
+  position: absolute;
+  background: linear-gradient(#2c6ed5 70%, transparent);
+  width: 100vw;
+  height: 235px;
+  z-index: 1;
 `
 const Art = styled.img`
   position: absolute;
