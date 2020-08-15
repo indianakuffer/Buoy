@@ -9,7 +9,7 @@ const ListingContainer = styled.div`
   color: #${props => props.darkText ? '086788' : 'fbffe2'};
   border-radius: 10px;
   padding: 5px 8px;
-  word-break: break-all;
+  word-break: break-word;
 `
 const TopRow = styled.div`
   margin-bottom: 3px;
