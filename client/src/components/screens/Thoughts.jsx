@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { getUserThoughts } from '../../services/users'
 import ThoughtListing from '../shared/ThoughtListing'
 import Title from '../shared/Title'
+import ThoughtPulltab from '../shared/ThoughtPulltab'
 
 const ThoughtsContainer = styled.div`
   display: flex;
@@ -58,6 +59,7 @@ export default function Thoughts(props) {
   return (
     <ThoughtsContainer>
       <Title>Your Thoughts</Title>
+      <ThoughtPulltab />
       <ThoughtsFeed>
         {thoughtList &&
           thoughtList.map(thought => (

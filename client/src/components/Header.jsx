@@ -73,7 +73,7 @@ export default function Header(props) {
       <Right>
         {props.currentUser &&
           <>
-            <Link to='/thoughts/new'><AddThought src={require('../images/plus.svg')}></AddThought></Link>
+            {/* <Link to='/thoughts/new'><AddThought src={require('../images/plus.svg')}></AddThought></Link> */}
             <Link to='/account'><ProfilePic size={30} currentUser={props.currentUser} /></Link>
             <a onClick={logout}>Logout</a>
           </>

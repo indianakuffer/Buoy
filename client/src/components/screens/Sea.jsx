@@ -4,6 +4,7 @@ import { getAllThoughts, searchThoughts } from '../../services/thoughts'
 import ThoughtListing from '../shared/ThoughtListing'
 import Title from '../shared/Title'
 import SearchBar from '../SearchBar'
+import ThoughtPullTab from '../shared/ThoughtPulltab'
 
 const SeaContainer = styled.div`
   display: flex;
@@ -12,28 +13,28 @@ const SeaContainer = styled.div`
   user-select: none;
 `
 const ThoughtsFeed = styled.div`
-display: flex;
-position: absolute;
-flex-flow: column;
-min-width: 300px;
-height: 70vh;
-z-index: 0;
-max-width: 90%;
->* {
-  margin-bottom: 45px;
-}
-animation: scrollUp 5000s linear;
-@keyframes scrollUp {
-  from {top: 100vh};
-  to { top: -10000vh};
-}
+  display: flex;
+  position: absolute;
+  flex-flow: column;
+  min-width: 300px;
+  height: 70vh;
+  z-index: 0;
+  max-width: 90%;
+  >* {
+    margin-bottom: 45px;
+  }
+  animation: scrollUp 5000s linear;
+  @keyframes scrollUp {
+    from {top: 100vh};
+    to { top: -10000vh};
+  }
 `
 const TopCurtain = styled.div`
-position: absolute;
-background: #2c6ed5;
-width: 100vw;
-height: 200px;
-z-index: 1;
+  position: absolute;
+  background: #2c6ed5;
+  width: 100vw;
+  height: 235px;
+  z-index: 1;
 `
 const Art = styled.img`
   position: absolute;
@@ -60,7 +61,6 @@ export default function Sea(props) {
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
-
   }, [props.currentUser])
 
   useEffect(() => {
@@ -91,7 +91,6 @@ export default function Sea(props) {
 
   const handleScroll = (e) => {
     setOffset(offset -= e.deltaY)
-    console.log(offset)
   }
 
   const fetchThoughts = async () => {
@@ -106,6 +105,7 @@ export default function Sea(props) {
 
   return (
     <SeaContainer>
+      <ThoughtPullTab />
       <TopCurtain />
       <Title>Sea</Title>
       <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} colorList={colorList} setColorList={setColorList} />
