@@ -6,22 +6,35 @@ import Title from '../shared/Title'
 
 const Tab = styled(animated.div)`
   position: absolute;
-  right: 0;
-  top: 40px;
+  display: flex;
+  background-color: #e64c3c;
+  right: -40px;
+  top: 45px;
+  height: 40px;
+  width: 80px;
+  border-radius: 8px;
+  z-index: 3;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s width ease;
+`
+const Open = styled.div`
   height: 40px;
   width: 40px;
-  border-radius: 8px 0 0 8px;
-  z-index: 2;
   background-image: url('${require('../../images/plus.svg')}');
   background-size: 30px 30px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #2a9d8f;
-  cursor: pointer;
-  transition: 0.3s width ease;
-  :hover {
-    width: 60px;
-  }
+`
+const Close = styled.div`
+  height: 40px;
+  width: 40px;
+  background-image: url('${require('../../images/plus.svg')}');
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(45deg);
 `
 const Container = styled(animated.div)`
   position: relative;
@@ -35,17 +48,6 @@ const Container = styled(animated.div)`
   height: 100vh;
   width: 100vw;
   z-index: 2;
-`
-const CloseButton = styled.div`
-  position: absolute;
-  user-select: none;
-  cursor: pointer;
-  left: 20px;
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  font-weight: 450;
-  font-size: 33px;
 `
 const Art = styled.img`
   position: absolute;
@@ -65,10 +67,12 @@ export default function ThoughtPulltab() {
 
   return (
     <>
-      <Tab style={{ transform: spring.interpolate(spring => `translate3d(-${spring}vw,0,0)`) }} onClick={() => setShowNewTab(!showNewTab)} />
+      <Tab style={{ transform: spring.interpolate(spring => `translate3d(-${spring}vw,0,0)`) }} onClick={() => setShowNewTab(!showNewTab)}>
+        <Open />
+        <Close />
+      </Tab>
       <Container style={{ transform: spring.interpolate(spring => `translate3d(-${spring}vw,0,0)`) }}>
-        <CloseButton onClick={() => setShowNewTab(false)}>X</CloseButton>
-        <Title>How Are You Doing?</Title>
+        <Title>Add A Thought</Title>
         <NewThoughtBox />
         <Art src={require('../../images/bottle.svg')} alt='message in a bottle' />
       </Container>
