@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components'
 import { verifyUser } from './services/auth';
 import { Route, Switch } from 'react-router-dom'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated, interpolate } from 'react-spring'
 import { __RouterContext } from 'react-router'
 import Landing from './components/screens/Landing'
 import Header from './components/Header';
@@ -39,9 +39,9 @@ function App() {
   }
 
   const transitions = useTransition(location, location => location.pathname, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    from: { opacity: 1, transform: 'translateY(-20vh)' },
+    enter: { opacity: 1, transform: 'translateY(0vh)' },
+    leave: { opacity: 0, transform: 'translateY(20vh)' },
   })
 
   return (
@@ -58,6 +58,7 @@ function App() {
               </Route>
               <Route exact path='/login'>
                 <Login
+                  currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
               </Route>

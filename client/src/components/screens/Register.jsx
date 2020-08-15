@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { registerUser } from '../../services/auth'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
@@ -76,6 +76,8 @@ export default function Register(props) {
       setShowError(true)
     }
   }
+
+  if (props.currentUser) { return <Redirect to='/sea' /> }
 
   return (
     <RegisterContainer>
