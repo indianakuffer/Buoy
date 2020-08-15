@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { postThought, giveThoughtTag } from '../../services/thoughts'
 import Title from '../shared/Title'
 import Button from '../shared/Button'
+import Popup from '../shared/Popup'
 
 const CreateThoughtContainer = styled.div`
   display: flex;
@@ -71,10 +72,22 @@ const CharCount = styled.div`
   color: ${props => props.length > 40 ? 'red' : '#' + props.textColor};
   font-size: 12px;
 `
+const Art = styled.img`
+  position: absolute;
+  height: 350px;
+  bottom: 20px;
+  right: 5%;
+  z-index: -1;
+  animation: sine 4s alternate infinite ease-in-out;
+  @keyframes sine {
+    to { transform: translatey(50px);}
+  }
+`
 const colorList = [['e64c3c', 'fbffe2'], ['f0c419', '086788'], ['086788', 'fbffe2'], ['fbffe2', '086788'], ['2a9d8f', 'fbffe2']]
 
 export default function CreateThought(props) {
   const history = useHistory()
+  const [showError, setShowError] = useState(false)
   const [textColor, setTextColor] = useState('086788')
   const [formData, setFormData] = useState({
     content: '',
@@ -103,6 +116,11 @@ export default function CreateThought(props) {
     e.preventDefault()
     try {
       const { content, color, tag, location } = formData
+      if (content.length > 40) {
+        setShowError(true)
+        return
+      }
+
       const resp = await postThought({ content: content, color: color, location: location })
       // // tags must be checked / set after thought posted
       if (tag != '') {
@@ -157,6 +175,10 @@ export default function CreateThought(props) {
         </Colors>
       </NewThought>
       <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Send</Button>
+      <Art src={require('../../images/bottle.svg')} alt='message in a bottle' />
+      {showError &&
+        <Popup content='Thought must be under 40 characters' closeFunction={() => setShowError(false)} />
+      }
     </CreateThoughtContainer>
   )
 }
