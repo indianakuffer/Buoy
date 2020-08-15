@@ -107,7 +107,7 @@ export default function Sea(props) {
     <SeaContainer>
       <ThoughtPullTab />
       <TopCurtain />
-      <Title>Sea</Title>
+      <Title style={{ background: '#2c6ed5', width: '100%' }}>Sea</Title>
       <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} colorList={colorList} setColorList={setColorList} />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&

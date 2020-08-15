@@ -58,6 +58,7 @@ function App() {
               </Route>
               <Route exact path='/login'>
                 <Login
+                  currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
               </Route>

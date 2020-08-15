@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Redirect } from 'react-router-dom'
 import { loginUser } from '../../services/auth'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
@@ -72,13 +72,15 @@ export default function Login(props) {
     try {
       const userData = await loginUser(formData)
       props.setCurrentUser(userData)
-      history.push('/')
+      history.push('/sea')
     } catch (error) {
       console.log(error)
       setErrorMessage('Sorry, please try again!')
       setShowError(true)
     }
   }
+
+  if (props.currentUser) { return <Redirect to='/sea' /> }
 
   return (
     <LoginContainer>
