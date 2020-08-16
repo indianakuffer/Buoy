@@ -146,10 +146,10 @@ export default function NewThoughtBox() {
         <CharCount textColor={textColor} length={formData.content.length}>{formData.content.length}</CharCount>
         <StyledForm textColor={textColor} onSubmit={handleSubmit}>
           <label htmlFor='content'>
-            <input type='text' name='content' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
+            <input type='text' name='content' autocomplete='off' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
           </label>
           <label htmlFor='tag'>
-            <input type='text' name='tag' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
+            <input type='text' name='tag' autocomplete='off' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
           </label>
           <input type='submit' style={{ display: 'none' }} />
         </StyledForm>
