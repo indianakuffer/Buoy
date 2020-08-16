@@ -82,7 +82,7 @@ export default function SearchBar(props) {
       <SearchBarContainer>
         <form onSubmit={handleSubmit}>
           <label htmlFor='search'>
-            <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' />
+            <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' autocomplete='off' />
           </label>
         </form>
         <ColorHalf>
