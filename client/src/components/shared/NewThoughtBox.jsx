@@ -146,10 +146,10 @@ export default function NewThoughtBox() {
         <CharCount textColor={textColor} length={formData.content.length}>{formData.content.length}</CharCount>
         <StyledForm textColor={textColor} onSubmit={handleSubmit}>
           <label htmlFor='content'>
-            <input type='text' name='content' autocomplete='off' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
+            <input type='text' name='content' autoComplete='off' value={formData.content} onChange={handleChange} placeholder={`I'm feeling...`}></input>
           </label>
           <label htmlFor='tag'>
-            <input type='text' name='tag' autocomplete='off' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
+            <input type='text' name='tag' autoComplete='off' value={formData.tag} onChange={handleChange} placeholder='tag'></input>
           </label>
           <input type='submit' style={{ display: 'none' }} />
         </StyledForm>
@@ -163,7 +163,7 @@ export default function NewThoughtBox() {
           ))}
         </Colors>
       </NewThought>
-      <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Send</Button>
+      <Button bgColor='#e64c3c' color='white' forceSize='30px' onClick={handleSubmit}>Add to Sea</Button>
       {showError &&
         <Popup content='Thought must be under 40 characters' closeFunction={() => setShowError(false)} />
       }

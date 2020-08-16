@@ -72,7 +72,7 @@ export default function ThoughtPulltab() {
         <Close />
       </Tab>
       <Container style={{ transform: spring.interpolate(spring => `translate3d(-${spring}vw,0,0)`) }}>
-        <Title>Add A Thought</Title>
+        <Title>New Thought</Title>
         <NewThoughtBox />
         <Art src={require('../../images/bottle.svg')} alt='message in a bottle' />
       </Container>
