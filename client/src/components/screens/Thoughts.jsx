@@ -45,11 +45,12 @@ const Art = styled.img`
   }
 `
 
-
 export default function Thoughts(props) {
   const [thoughtList, setThoughtList] = useState(null)
 
-  useEffect(() => { if (props.currentUser) { getThoughts() } }, [props.currentUser])
+  useEffect(() => {
+    if (props.currentUser) { getThoughts() }
+  }, [props.currentUser])
 
   const getThoughts = async () => {
     const thoughtData = await getUserThoughts(props.currentUser.id)

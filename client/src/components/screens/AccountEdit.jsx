@@ -146,12 +146,12 @@ export default function AccountEdit(props) {
               ))}
             </ImageSelect>
           </ProfilePicSection>
-          <EditForm onSubmit={handleSubmit} autocomplete='off'>
+          <EditForm onSubmit={handleSubmit} autoComplete='off'>
             <label htmlFor='username'>
-              <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username' autocomplete='false' />
+              <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='username' autoComplete='false' />
             </label>
             <label htmlFor='email'>
-              <Input type='text' name='email' value={formData.email} onChange={handleChange} placeholder='email' autocomplete='false' />
+              <Input type='text' name='email' value={formData.email} onChange={handleChange} placeholder='email' autoComplete='false' />
             </label>
             <label htmlFor='password'>
               <Input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='password' />

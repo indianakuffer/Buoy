@@ -10,9 +10,10 @@ import Login from './components/screens/Login';
 import Register from './components/screens/Register';
 import AccountDetails from './components/screens/AccountDetails';
 import AccountEdit from './components/screens/AccountEdit';
-import CreateThought from './components/screens/CreateThought';
+// import CreateThought from './components/screens/CreateThought';
 import Thoughts from './components/screens/Thoughts';
 import Sea from './components/screens/Sea';
+import Insights from './components/screens/Insights';
 import PleaseLogin from './components/shared/PleaseLogin'
 
 const MainContainer = styled.main`
@@ -87,14 +88,20 @@ function App() {
                 />
                 {!currentUser && <PleaseLogin />}
               </Route>
-              <Route exact path='/thoughts/new'>
+              {/* <Route exact path='/thoughts/new'>
                 <CreateThought
                   currentUser={currentUser}
                 />
                 {!currentUser && <PleaseLogin />}
-              </Route>
+              </Route> */}
               <Route exact path='/sea'>
                 <Sea
+                  currentUser={currentUser}
+                />
+                {!currentUser && <PleaseLogin />}
+              </Route>
+              <Route exact path='/insights'>
+                <Insights
                   currentUser={currentUser}
                 />
                 {!currentUser && <PleaseLogin />}
