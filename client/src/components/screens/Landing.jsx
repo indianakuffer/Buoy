@@ -20,7 +20,7 @@ const LandingContainer = styled.div`
     max-width: 1200px;
   }
   a {
-    margin-top: 100px;
+    margin-top: 70px;
     align-self: center;
   }
   @media only screen and (max-width: 768px) {

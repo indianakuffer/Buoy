@@ -81,10 +81,7 @@ export default function NewThoughtBox() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        setFormData({
-          ...formData,
-          location: { longitude: position.coords.longitude, latitude: position.coords.latitude }
-        })
+        setFormData({ ...formData, location: { longitude: position.coords.longitude, latitude: position.coords.latitude } })
       })
     }
   }, [])
@@ -96,20 +93,17 @@ export default function NewThoughtBox() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const { content, color, tag, location } = formData
+    if (content.length > 40) {
+      setShowError(true)
+      return
+    }
     try {
-      const { content, color, tag, location } = formData
-      if (content.length > 40) {
-        setShowError(true)
-        return
-      }
-
       const resp = await postThought({ content: content, color: color, location: location })
-      // // tags must be checked / set after thought posted
+      // tags must be checked / set after thought posted
       if (tag != '') {
         setTag(resp.id, tag.replace(/[#,!@$%^&*()<>?:;"]/g, '').split(' '))
-      } else {
-        redirectPage()
-      }
+      } else { redirectPage() }
     } catch (error) {
       alert(error)
     }

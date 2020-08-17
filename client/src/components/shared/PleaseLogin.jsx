@@ -39,7 +39,7 @@ export default function PleaseLogin() {
   const flyIn = useSpring({
     from: { opacity: 0, transform: 'translateY(-200%)' },
     to: { opacity: 1, transform: 'translateY(0%)' },
-    delay: 500,
+    delay: 1000,
     config: { friction: 30, mass: 2, tension: 170 }
   })
 

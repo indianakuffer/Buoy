@@ -28,7 +28,7 @@ const Likes = styled.div`
   padding-right: 10px;
   user-select: none;
   cursor: pointer;
-  div {
+  .like-heart {
     margin-right: 2px;
     height: 12px;
     width: 12px;
@@ -87,7 +87,7 @@ export default function ThoughtListing(props) {
     if (darkList.includes(props.thoughtData.color)) { setDarkText(true) }
     // if thought is already liked by user, set liked state true
     props.thoughtData.likes.forEach(like => {
-      if (like.user_id === props.currentUser.id) {
+      if (!liked && like.user_id === props.currentUser.id) {
         setLiked(true)
         setAlterBy(-1)
       }
@@ -124,7 +124,7 @@ export default function ThoughtListing(props) {
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
         <Likes onClick={toggleLike} liked={liked} darkText={darkText}>
-          <div />
+          <div className='like-heart' />
           {props.thoughtData.likes.length + alterBy + liked}
         </Likes>
         <TagContainer>
@@ -134,7 +134,6 @@ export default function ThoughtListing(props) {
         </TagContainer>
         <Time>{timestamp}</Time>
       </BottomRow>
-
     </ListingContainer>
   )
 }
