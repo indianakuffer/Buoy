@@ -69,12 +69,12 @@ class ThoughtsController < ApplicationController
     render json: @thought, include: [:likes, :tags]
   end
 
-  # GET /thoughts/search?tag=first-post
+  # GET /thoughts/search?query=first-post
   def search
-    tagArray = params[:tag].split(',') if params[:tag]
+    qArray = params[:query].split(',')
 
-    if tagArray
-      @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name.downcase} & tagArray).empty? == false }
+    if qArray
+      @thoughts = Thought.all.select { |thought| ((thought.tags.map {|x| x.name.downcase} & qArray).empty? == false) || ((thought.content.split(' ').map {|x| x.downcase} & qArray).empty? == false)  }
     end
 
     render json: @thoughts.reverse, include: [:tags, :likes]

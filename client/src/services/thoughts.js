@@ -30,12 +30,12 @@ export const likeThought = async (id) => {
   return resp.data
 }
 
-export const searchThoughts = async (tagArray) => {
-  let tag = ''
-  if (tagArray.length > 0) {
-    tag = `&tag=${tagArray.join(',').toLowerCase()}`
+export const searchThoughts = async (queryArray) => {
+  let query = ''
+  if (queryArray.length > 0) {
+    query = `&query=${queryArray.join(',').toLowerCase()}`
   }
 
-  const resp = await api.get(`/thoughts/search?${tag}`)
+  const resp = await api.get(`/thoughts/search?${query}`)
   return resp.data
 }

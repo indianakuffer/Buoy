@@ -80,7 +80,7 @@ export default function NewThoughtBox() {
 
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition(position => {
         setFormData({ ...formData, location: { longitude: position.coords.longitude, latitude: position.coords.latitude } })
       })
     }
