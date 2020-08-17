@@ -93,7 +93,9 @@ export default function NewThoughtBox() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { content, color, tag, location } = formData
+    let { content, color, tag, location } = formData
+    // turn location into string
+    location = `${location.longitude},${location.latitude}`
     if (content.length > 40) {
       setShowError(true)
       return
