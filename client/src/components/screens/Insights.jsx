@@ -91,7 +91,8 @@ export default function Insights(props) {
   const [pieData, setPieData] = useState([])
   const [colorList, setColorList] = useState([])
 
-  const trail = useTrail(thoughtList.length, {
+  // Animations
+  const trailAnim = useTrail(thoughtList.length, {
     to: { opacity: 1, x: 0 },
     from: { opacity: 0, x: 20 },
     config: { mass: 5, tension: 2000, friction: 200 }
@@ -103,6 +104,7 @@ export default function Insights(props) {
     config: { mass: 5, tension: 200, friction: 200 }
   })
 
+  // useEffects
   useEffect(() => {
     if (props.currentUser) { getThoughts() }
   }, [props.currentUser])
@@ -126,6 +128,7 @@ export default function Insights(props) {
     setPieData(newData)
   }, [thoughtList])
 
+  // Functions
   const getThoughts = async () => {
     const thoughtData = await getUserThoughts(props.currentUser.id)
     setThoughtList(thoughtData.data)
@@ -157,7 +160,7 @@ export default function Insights(props) {
               <option value='likes asc'>Likes: Least to Most</option>
             </SortDropdown>
             <Grid rerender={rerender}>
-              {trail.map(({ x, ...rest }, index) => (
+              {trailAnim.map(({ x, ...rest }, index) => (
                 <Square
                   key={`square-${thoughtList[index].id}`}
                   color={thoughtList[index].color}

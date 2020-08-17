@@ -12,7 +12,6 @@ const SearchBarContainer = styled.div`
   width: fit-content;
   max-width: 100%;
   z-index: 1;
-  
   input {
     color: #086788; 
     font-size: 20px;

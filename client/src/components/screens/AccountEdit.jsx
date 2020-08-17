@@ -133,6 +133,10 @@ export default function AccountEdit(props) {
     }
   }
 
+  const setPic = (picId) => {
+    setFormData({ ...formData, profile_pic_id: picId })
+  }
+
   return (
     <AccountEditContainer>
       <Title>Edit Your Account</Title>
@@ -142,7 +146,12 @@ export default function AccountEdit(props) {
             {profilePics && <Pic src={profilePics[formData.profile_pic_id - 1].image} alt='current profile icon' />}
             <ImageSelect>
               {profilePics && profilePics.map(pic => (
-                <img src={pic.image} onClick={() => setFormData({ ...formData, profile_pic_id: pic.id })} alt='potential profile icon' key={`pic-option-${pic.image}`} />
+                <img
+                  src={pic.image}
+                  onClick={() => setPic(pic.id)}
+                  alt='potential profile icon'
+                  key={`pic-option-${pic.image}`}
+                />
               ))}
             </ImageSelect>
           </ProfilePicSection>
@@ -163,10 +172,10 @@ export default function AccountEdit(props) {
           </EditForm>
         </>
       }
-      <Art src={require('../../images/lighthouse.svg')} alt='lighthouse' />
       {showError &&
         <Popup content={errorMessage} closeFunction={() => setShowError(false)} />
       }
+      <Art src={require('../../images/lighthouse.svg')} alt='lighthouse' />
     </AccountEditContainer>
   )
 }

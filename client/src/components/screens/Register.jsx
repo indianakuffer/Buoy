@@ -71,12 +71,12 @@ export default function Register(props) {
       props.setCurrentUser(userData)
       history.push('/')
     } catch (error) {
-      console.log(error)
       setErrorMessage(`Please make sure your email is valid, and your username is unique!`)
       setShowError(true)
     }
   }
 
+  // Redirect
   if (props.currentUser) { return <Redirect to='/sea' /> }
 
   return (
