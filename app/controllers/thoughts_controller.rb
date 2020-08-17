@@ -74,7 +74,7 @@ class ThoughtsController < ApplicationController
     qArray = params[:query].split(',')
 
     if qArray
-      @thoughts = Thought.all.select { |thought| ((thought.tags.map {|x| x.name.downcase} & qArray).empty? == false) || ((thought.content.split(' ').map {|x| x.downcase} & qArray).empty? == false)  }
+      @thoughts = Thought.all.select { |thought| ((thought.tags.map {|x| x.name.downcase} & qArray).empty? == false) || ((qArray.select {|q| thought.content.downcase.include? q}).empty? == false)}
     end
 
     render json: @thoughts.reverse, include: [:tags, :likes]
