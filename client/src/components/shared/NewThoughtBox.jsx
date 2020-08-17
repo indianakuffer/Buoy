@@ -100,6 +100,7 @@ export default function NewThoughtBox() {
     }
     try {
       const resp = await postThought({ content: content, color: color, location: location })
+      console.log(location)
       // tags must be checked / set after thought posted
       if (tag != '') {
         setTag(resp.id, tag.replace(/[#,!@$%^&*()<>?:;"]/g, '').split(' '))

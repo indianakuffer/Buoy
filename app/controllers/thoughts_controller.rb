@@ -69,16 +69,11 @@ class ThoughtsController < ApplicationController
     render json: @thought, include: [:likes, :tags]
   end
 
-  # GET /thoughts/search?color=e64c3c&tag=first-post
+  # GET /thoughts/search?tag=first-post
   def search
-    colorArray = params[:color].split(',') if params[:color]
     tagArray = params[:tag].split(',') if params[:tag]
 
-    if colorArray && tagArray
-      @thoughts = Thought.all.select { |thought| (colorArray.include? thought.color) && ((thought.tags.map {|x| x.name.downcase} & tagArray).empty? == false) }
-    elsif colorArray 
-      @thoughts = Thought.all.select { |thought| colorArray.include? thought.color }
-    elsif tagArray
+    if tagArray
       @thoughts = Thought.all.select { |thought| (thought.tags.map {|x| x.name.downcase} & tagArray).empty? == false }
     end
 

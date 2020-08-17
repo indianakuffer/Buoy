@@ -9,8 +9,6 @@ const PleaseContainer = styled.div`
   width: 100vw;
   top: 0;
   height: 100vh;
-  background-color: rgba(24, 41, 79, 0.8);
-  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
