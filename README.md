@@ -231,8 +231,8 @@ src
 | Thoughts Comp               |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | Sea Comp                    |    H     |     4.0 hrs    |     3.5 hrs      |     TBD     |
 | Advanced / Mobile Styling   |    H     |     8.0 hrs    |     9.5 hrs      |     TBD     |
-| Extra                       |    H     |     5.0 hrs    |     5.0 hrs        |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     38.25 hrs     |     TBD     |
+| Extra                       |    H     |     5.0 hrs    |     7.0 hrs        |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     40.25 hrs     |     TBD     |
 
 <br>
 

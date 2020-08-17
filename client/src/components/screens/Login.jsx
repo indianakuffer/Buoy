@@ -74,12 +74,12 @@ export default function Login(props) {
       props.setCurrentUser(userData)
       history.push('/sea')
     } catch (error) {
-      console.log(error)
       setErrorMessage('Sorry, please try again!')
       setShowError(true)
     }
   }
 
+  // Redirect
   if (props.currentUser) { return <Redirect to='/sea' /> }
 
   return (

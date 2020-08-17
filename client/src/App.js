@@ -88,12 +88,6 @@ function App() {
                 />
                 {!currentUser && <PleaseLogin />}
               </Route>
-              {/* <Route exact path='/thoughts/new'>
-                <CreateThought
-                  currentUser={currentUser}
-                />
-                {!currentUser && <PleaseLogin />}
-              </Route> */}
               <Route exact path='/sea'>
                 <Sea
                   currentUser={currentUser}

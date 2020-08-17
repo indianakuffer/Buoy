@@ -9,8 +9,6 @@ const PleaseContainer = styled.div`
   width: 100vw;
   top: 0;
   height: 100vh;
-  background-color: rgba(24, 41, 79, 0.8);
-  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +37,7 @@ export default function PleaseLogin() {
   const flyIn = useSpring({
     from: { opacity: 0, transform: 'translateY(-200%)' },
     to: { opacity: 1, transform: 'translateY(0%)' },
-    delay: 500,
+    delay: 1000,
     config: { friction: 30, mass: 2, tension: 170 }
   })
 

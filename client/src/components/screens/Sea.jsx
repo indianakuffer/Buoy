@@ -57,12 +57,13 @@ export default function Sea(props) {
   const [thoughtList, setThoughtList] = useState(null)
   let [offset, setOffset] = useState(0)
   const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
-  let [touchStart, setTouchStart] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
   }, [props.currentUser])
 
+  // Mobile scroll handling
   useEffect(() => {
     window.addEventListener('wheel', handleScroll)
     window.addEventListener('touchstart', processTouchstart)
@@ -108,7 +109,12 @@ export default function Sea(props) {
       <ThoughtPullTab />
       <TopCurtain />
       <Title style={{ background: '#2c6ed5', width: '100%' }}>Sea</Title>
-      <SearchBar fetchThoughts={fetchThoughts} filterThoughts={filterThoughts} colorList={colorList} setColorList={setColorList} />
+      <SearchBar
+        fetchThoughts={fetchThoughts}
+        filterThoughts={filterThoughts}
+        colorList={colorList}
+        setColorList={setColorList}
+      />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
           thoughtList.filter(thought => colorList.includes(thought.color)).map(thought => (
@@ -122,7 +128,6 @@ export default function Sea(props) {
           ))
         }
       </ThoughtsFeed>
-
       <Art src={require('../../images/telescope.svg')} alt='message in a bottle' />
     </SeaContainer>
   )

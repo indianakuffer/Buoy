@@ -73,6 +73,7 @@ export default function Popup(props) {
           }
           {props.button2Text && !props.link2 &&
             <>
+              <ButtonBuffer />
               <Button onClick={props.button2OnClick} bgColor={props.button2Color} color='white' forceSize={props.button2Size}>{props.button2Text}</Button>
             </>
           }
