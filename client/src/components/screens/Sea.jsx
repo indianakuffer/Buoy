@@ -99,8 +99,8 @@ export default function Sea(props) {
     setThoughtList(resp)
   }
 
-  const filterThoughts = async (colorArray, tagArray) => {
-    const resp = await searchThoughts(colorArray, tagArray)
+  const filterThoughts = async (queryArray) => {
+    const resp = await searchThoughts(queryArray)
     setThoughtList(resp)
   }
 
@@ -117,15 +117,17 @@ export default function Sea(props) {
       />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
-          thoughtList.filter(thought => colorList.includes(thought.color)).map(thought => (
-            <ThoughtListing
-              thoughtData={thought}
-              currentUser={props.currentUser}
-              source={thoughtList}
-              setSource={setThoughtList}
-              key={`user-thought-${thought.id}`}
-            />
-          ))
+          thoughtList
+            .filter(thought => colorList.includes(thought.color))
+            .map(thought => (
+              <ThoughtListing
+                thoughtData={thought}
+                currentUser={props.currentUser}
+                source={thoughtList}
+                setSource={setThoughtList}
+                key={`user-thought-${thought.id}`}
+              />
+            ))
         }
       </ThoughtsFeed>
       <Art src={require('../../images/telescope.svg')} alt='message in a bottle' />
