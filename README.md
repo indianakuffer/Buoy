@@ -224,15 +224,15 @@ src
 | Set Up Services and Auth    |    H     |     1.0 hrs    |     0.5 hrs      |     TBD     |
 | Set Up Component Shells     |    H     |     3.0 hrs    |     0.12 hrs     |     TBD     |
 | Initial Styling             |    M     |     3.0 hrs    |     3.25 hrs      |     TBD     |
-| Shared Comps                |    M     |     6.0 hrs    |     4.5 hrs      |     TBD     |
+| Shared Comps                |    M     |     6.0 hrs    |     5.5 hrs      |     TBD     |
 | Login / Register Comps      |    H     |     2.0 hrs    |     1 hrs        |     TBD     |
 | AccountDetails / Edit Comps |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | CreateThought Comp          |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | Thoughts Comp               |    H     |     2.0 hrs    |     1.5 hrs      |     TBD     |
 | Sea Comp                    |    H     |     4.0 hrs    |     3.5 hrs      |     TBD     |
-| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     3.5 hrs      |     TBD     |
-| Extra                       |    H     |     5.0 hrs    |     0 hrs        |     TBD     |
-| TOTAL                       |          |    47.0 hrs    |     26.25 hrs     |     TBD     |
+| Advanced / Mobile Styling   |    H     |     8.0 hrs    |     9.5 hrs      |     TBD     |
+| Extra                       |    H     |     5.0 hrs    |     5.0 hrs        |     TBD     |
+| TOTAL                       |          |    47.0 hrs    |     38.25 hrs     |     TBD     |
 
 <br>
 

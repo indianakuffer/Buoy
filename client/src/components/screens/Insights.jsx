@@ -21,6 +21,7 @@ const ScrollContainer = styled.div`
   max-width: 800px;
   overflow: auto;
   align-items: center;
+  scrollbar-width: none;
   ::-webkit-scrollbar {
     display: none;
   }
