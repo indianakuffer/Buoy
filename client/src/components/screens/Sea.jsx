@@ -60,6 +60,7 @@ export default function Sea(props) {
   const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
   const [touchStart, setTouchStart] = useState(0)
   const [userLocation, setUserLocation] = useState([])
+  const [distanceFilter, setDistanceFilter] = useState(null)
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
@@ -128,17 +129,17 @@ export default function Sea(props) {
         filterThoughts={filterThoughts}
         colorList={colorList}
         setColorList={setColorList}
+        setDistanceFilter={setDistanceFilter}
       />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
           thoughtList
             .filter(thought => colorList.includes(thought.color))
             .filter(thought => {
-              if (!thought.location || thought.location.includes('null')) {
-                return false
-              }
+              if (!distanceFilter || distanceFilter === -1) { return true }
+              if (!thought.location || thought.location.includes('null')) { return false }
               let compare = thought.location.split(',')
-              return coordDistance(userLocation[0], userLocation[1], compare[0], compare[1]) < 100
+              return coordDistance(userLocation[0], userLocation[1], compare[0], compare[1]) < distanceFilter
             })
             .map(thought => (
               <ThoughtListing

@@ -151,7 +151,7 @@ export default function Insights(props) {
         <GridContainer>
           <div>
             <SortDropdown onChange={e => handleSort(e)}>
-              <option value="" defaultValue disabled hidden>Sort by:</option>
+              <option value="" defaultValue hidden>Sort by:</option>
               <option value='created_at desc'>Date: New to Old </option>
               <option value='created_at asc'>Date: Old to New</option>
               <option value='likes desc'>Likes: Most to Least</option>
