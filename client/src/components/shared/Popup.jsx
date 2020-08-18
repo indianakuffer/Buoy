@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from './Button'
 import { useSpring, animated } from 'react-spring'
 
-const PleaseContainer = styled.div`
+const PopContainer = styled.div`
   position: absolute;
   width: 100vw;
   top: 0;
@@ -51,7 +51,7 @@ export default function Popup(props) {
   })
 
   return (
-    <PleaseContainer onClick={props.closeFunction}>
+    <PopContainer onClick={props.closeFunction} style={props.style}>
       <Message style={flyIn} onClick={e => e.stopPropagation()}>
         {props.content}
         <ButtonContainer>
@@ -79,6 +79,6 @@ export default function Popup(props) {
           }
         </ButtonContainer>
       </Message>
-    </PleaseContainer>
+    </PopContainer>
   )
 }
