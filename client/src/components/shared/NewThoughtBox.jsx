@@ -78,13 +78,15 @@ export default function NewThoughtBox() {
     location: { longitude: null, latitude: null }
   })
 
-  useEffect(() => {
+  useEffect(() => { getLocation() }, [])
+
+  const getLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         setFormData({ ...formData, location: { longitude: position.coords.longitude, latitude: position.coords.latitude } })
       })
     }
-  }, [])
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -93,6 +95,7 @@ export default function NewThoughtBox() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    getLocation()
     let { content, color, tag, location } = formData
     // turn location into string
     location = `${location.longitude},${location.latitude}`
@@ -102,7 +105,6 @@ export default function NewThoughtBox() {
     }
     try {
       const resp = await postThought({ content: content, color: color, location: location })
-      console.log(location)
       // tags must be checked / set after thought posted
       if (tag != '') {
         setTag(resp.id, tag.replace(/[#,!@$%^&*()<>?:;"]/g, '').split(' '))

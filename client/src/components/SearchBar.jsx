@@ -12,20 +12,41 @@ const SearchBarContainer = styled.div`
   width: fit-content;
   max-width: 100%;
   z-index: 1;
+  @media only screen and (max-width: 600px) {
+    max-width: 90%;
+  }
+`
+const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   input {
     color: #086788; 
     font-size: 20px;
     background: transparent;
     border: none;
     letter-spacing: 1px;
+    max-width: 100%;
     &:focus {
       outline: none;
     }
   }
+  select {
+    border: none;
+    color: grey;
+    font-size: 18px;
+    appearance: none;
+    text-align-last: right;
+    transform: translateY(1px);
+    padding-right:10px;
+  }
   @media only screen and (max-width: 600px) {
-    max-width: 90%;
-    form {
+    &, label {
       max-width: 50%;
+    }
+    select {
+      max-width: 70px;
+      height: 100%;
     }
   }
 `
@@ -46,7 +67,7 @@ const MagnifyingGlass = styled.button`
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;
-  margin-left: 15px;
+  margin-left: 7px;
   cursor: pointer;
 `
 const ColorHalf = styled.div`
@@ -60,6 +81,7 @@ export default function SearchBar(props) {
   const [formData, setFormData] = useState('')
 
   const handleChange = (e) => { setFormData(e.target.value) }
+  const handleDistance = (e) => { props.setDistanceFilter(parseInt(e.target.value)) }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -79,11 +101,25 @@ export default function SearchBar(props) {
   return (
     <Background>
       <SearchBarContainer>
-        <form onSubmit={handleSubmit}>
+        <SearchForm onSubmit={handleSubmit}>
           <label htmlFor='search'>
             <input type='text' name='search' value={formData} onChange={handleChange} placeholder='search...' autoComplete='off' />
           </label>
-        </form>
+          <label htmlFor='search'>
+            <select type='text' name='distance' onChange={handleDistance} autoComplete='off'>
+              <option value={null} defaultValue hidden>&or;</option>
+              <option value={-1}>Any</option>
+              <option value={5}>5 mi.</option>
+              <option value={10}>10 mi.</option>
+              <option value={25}>25 mi.</option>
+              <option value={50}>50 mi.</option>
+              <option value={100}>100 mi.</option>
+              <option value={500}>500 mi.</option>
+              <option value={1000}>1000 mi.</option>
+              <option value={3000}>3000 mi.</option>
+            </select>
+          </label>
+        </SearchForm>
         <ColorHalf>
           {colorList.map(color => (
             <SearchCircle color={color} setColorList={props.setColorList} colorList={props.colorList} key={`searchCircle${color}`} />

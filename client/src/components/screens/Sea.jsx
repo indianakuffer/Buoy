@@ -5,6 +5,7 @@ import ThoughtListing from '../shared/ThoughtListing'
 import Title from '../shared/Title'
 import SearchBar from '../SearchBar'
 import ThoughtPullTab from '../shared/ThoughtPulltab'
+import coordDistance from '../../helpers/coordDistance'
 
 const SeaContainer = styled.div`
   display: flex;
@@ -58,10 +59,24 @@ export default function Sea(props) {
   let [offset, setOffset] = useState(0)
   const [colorList, setColorList] = useState(['e64c3c', 'f0c419', '086788', 'fbffe2', '2a9d8f'])
   const [touchStart, setTouchStart] = useState(0)
+  const [userLocation, setUserLocation] = useState([])
+  const [distanceFilter, setDistanceFilter] = useState(null)
 
   useEffect(() => {
     if (props.currentUser) { fetchThoughts() }
   }, [props.currentUser])
+
+  useEffect(() => {
+    getLocation()
+  }, [])
+
+  const getLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        setUserLocation([position.coords.longitude, position.coords.latitude])
+      })
+    }
+  }
 
   // Mobile scroll handling
   useEffect(() => {
@@ -114,11 +129,18 @@ export default function Sea(props) {
         filterThoughts={filterThoughts}
         colorList={colorList}
         setColorList={setColorList}
+        setDistanceFilter={setDistanceFilter}
       />
       <ThoughtsFeed style={{ transform: `translateY(${offset}px)` }}>
         {thoughtList &&
           thoughtList
             .filter(thought => colorList.includes(thought.color))
+            .filter(thought => {
+              if (!distanceFilter || distanceFilter === -1) { return true }
+              if (!thought.location || thought.location.includes('null')) { return false }
+              let compare = thought.location.split(',')
+              return coordDistance(userLocation[0], userLocation[1], compare[0], compare[1]) < distanceFilter
+            })
             .map(thought => (
               <ThoughtListing
                 thoughtData={thought}
