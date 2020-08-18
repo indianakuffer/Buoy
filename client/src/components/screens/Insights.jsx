@@ -154,8 +154,6 @@ export default function Insights(props) {
               <option value="" defaultValue disabled hidden>Sort by:</option>
               <option value='created_at desc'>Date: New to Old </option>
               <option value='created_at asc'>Date: Old to New</option>
-              <option value='color desc'>Color: Most to Least</option>
-              <option value='color asc'>Color: Least to Most</option>
               <option value='likes desc'>Likes: Most to Least</option>
               <option value='likes asc'>Likes: Least to Most</option>
             </SortDropdown>
