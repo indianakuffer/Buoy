@@ -67,7 +67,7 @@ const MagnifyingGlass = styled.button`
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;
-  margin-left: 15px;
+  margin-left: 7px;
   cursor: pointer;
 `
 const ColorHalf = styled.div`

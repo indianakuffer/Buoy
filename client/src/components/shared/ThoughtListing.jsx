@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { likeThought, destroyThought } from '../../services/thoughts'
+import Popup from '../shared/Popup'
 
 const ListingContainer = styled.div`
   position: relative;
@@ -53,14 +54,36 @@ const Tag = styled.div`
   margin-right: 10px;
   min-width: fit-content;
 `
-const Delete = styled.div`
+const More = styled.div`
   position: absolute;
-  right: 5px;
+  right: 0;
+  top: 0;
   cursor: pointer;
   z-index: 1;
-  font-size: ${props => props.deleteConfirm === 'x' ? '16px' : '12px'};
-  background: ${props => props.deleteConfirm === 'x' ? 'transparent' : '#086788'};
-  color: ${props => props.deleteConfirm === 'x' ? 'inherit' : 'white'};
+  font-size: 14px;
+  color: inherit;
+  padding: 5px;
+`
+const Options = styled.div`
+  position: absolute;
+  font-size: 14px;
+  right: 5px;
+  background: white;
+  color: #086788;
+  z-index: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  div {
+    padding: 2px 5px;
+    cursor: pointer;
+    :hover {
+      background: #086788;
+      color: white;
+    }
+  }
+`
+const HideOptions = styled.div`
+  text-align: right;
 `
 const Time = styled.div`
   margin-left: 10px;
@@ -69,8 +92,9 @@ const Time = styled.div`
 export default function ThoughtListing(props) {
   const [darkText, setDarkText] = useState(false)
   const [timestamp, setTimestamp] = useState('')
-  const [deleteConfirm, setDeleteConfirm] = useState('x')
+  const [showOptions, setShowOptions] = useState(false)
   const [liked, setLiked] = useState(false)
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false)
   const darkList = ['f0c419', 'fbffe2']
   // alterby helps simulate the like count increasing/decreasing
   const [alterBy, setAlterBy] = useState(0)
@@ -103,11 +127,13 @@ export default function ThoughtListing(props) {
     }
   }
 
+  const confirmDelete = () => {
+    if (!deleteConfirmation) {
+      setDeleteConfirmation(!deleteConfirmation)
+    } else { deleteThought() }
+  }
+
   const deleteThought = async () => {
-    if (deleteConfirm === 'x') {
-      setDeleteConfirm('delete?')
-      return
-    }
     try {
       await destroyThought(props.thoughtData.id)
       props.setSource(props.source.filter(thought => thought.id !== props.thoughtData.id))
@@ -118,8 +144,17 @@ export default function ThoughtListing(props) {
 
   return (
     <ListingContainer color={props.thoughtData.color} darkText={darkText} liked={liked}>
-      {props.currentUser && props.thoughtData.user_id === props.currentUser.id &&
-        <Delete onClick={deleteThought} deleteConfirm={deleteConfirm}>{deleteConfirm}</Delete>
+      {props.currentUser &&
+        <More onClick={() => setShowOptions(!showOptions)}>&or;</More>
+      }
+      {showOptions &&
+        <Options>
+          <HideOptions onClick={() => setShowOptions(false)}>&and;</HideOptions>
+          {props.thoughtData.user_id === props.currentUser.id &&
+            <div onClick={confirmDelete}>{deleteConfirmation ? 'really?' : 'delete'}</div>
+          }
+          <div onClick={() => setShowOptions(false)}>flag</div>
+        </Options>
       }
       <TopRow>{props.thoughtData.content}</TopRow>
       <BottomRow>
