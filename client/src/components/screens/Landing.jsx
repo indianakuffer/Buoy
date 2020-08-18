@@ -36,7 +36,7 @@ const LandingContainer = styled.div`
   }
   @media only screen and (max-width: 600px) {
     h1 {
-      font-size: 100px;
+      font-size: 80px;
       margin: 30px 0 0 20px;
     }
     p {
@@ -63,6 +63,14 @@ const Art = styled.img`
     right: 5%;
   }
 `
+const Plug = styled.div`
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10px;
+  a {
+    color: white;
+  }
+`
 
 export default function Landing(props) {
   return (
@@ -72,6 +80,7 @@ export default function Landing(props) {
         Connect, reflect, and share how you're doing without judgement. We promise.</p>
       <Link to='/register'><Button bgColor='#e64c3c' color='white' forceSize='34px'>Let's Get Started!</Button></Link>
       <Art src={require('../../images/buoy.svg')} alt='buoy' />
+      <Plug>By <a href='http://www.indianakuffer.com' target='_blank' rel='noreferrer noopener'>Indiana Kuffer</a></Plug>
     </LandingContainer>
   )
 }
