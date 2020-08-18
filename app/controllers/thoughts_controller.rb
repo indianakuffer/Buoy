@@ -4,8 +4,8 @@ class ThoughtsController < ApplicationController
 
   # GET /thoughts
   def index
-    @thoughts = Thought.all
-    render json: @thoughts.reverse, include: [:likes, :tags]
+    @thoughts = Thought.all.limit(1000).order(created_at: :desc)
+    render json: @thoughts, include: [:likes, :tags]
   end
 
   # GET /thoughts/1
@@ -74,10 +74,10 @@ class ThoughtsController < ApplicationController
     qArray = params[:query].split(',')
 
     if qArray
-      @thoughts = Thought.all.select { |thought| ((thought.tags.map {|x| x.name.downcase} & qArray).empty? == false) || ((qArray.select {|q| thought.content.downcase.include? q}).empty? == false)}
+      @thoughts = Thought.all.order(created_at: :desc).select { |thought| ((thought.tags.map {|x| x.name.downcase} & qArray).empty? == false) || ((qArray.select {|q| thought.content.downcase.include? q}).empty? == false)}
     end
 
-    render json: @thoughts.reverse, include: [:tags, :likes]
+    render json: @thoughts, include: [:tags, :likes]
   end
 
   private
