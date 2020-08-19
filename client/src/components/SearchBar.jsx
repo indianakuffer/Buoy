@@ -38,7 +38,8 @@ const SearchForm = styled.form`
     appearance: none;
     text-align-last: right;
     transform: translateY(1px);
-    padding-right:10px;
+    padding-right: 10px;
+    background: transparent;
   }
   @media only screen and (max-width: 600px) {
     &, label {
@@ -67,8 +68,11 @@ const MagnifyingGlass = styled.button`
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;
-  margin-left: 7px;
+  margin-left: 15px;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    margin-left: 2px;
+  }
 `
 const ColorHalf = styled.div`
   @media only screen and (max-width: 600px) {
